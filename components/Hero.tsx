@@ -61,7 +61,7 @@ const Hero: React.FC = () => {
           <div className="relative w-full aspect-[4/3] max-w-[600px] rounded-2xl overflow-hidden border border-border-dark shadow-2xl bg-surface-dark">
             <div className="absolute inset-0 bg-gradient-to-tr from-background-dark/80 via-transparent to-transparent z-10"></div>
             <img 
-              src="/profile.jpg" 
+              src="./profile.jpg" 
               alt="Faiq Misbah Yazdi" 
               className="w-full h-full object-cover opacity-90 hover:scale-105 transition-transform duration-700"
             />

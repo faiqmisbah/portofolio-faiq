@@ -19,7 +19,7 @@ const Projects: React.FC = () => {
       id: 1,
       title: "E-Commerce Platform",
       category: "Web Dev",
-      image: "/projects/project1.png",
+      image: "./projects/project1.png",
       description: "Modern e-commerce website with seamless user experience and payment integration.",
       size: 'normal'
     },
@@ -27,7 +27,7 @@ const Projects: React.FC = () => {
       id: 2,
       title: "Mobile Banking App",
       category: "Mobile",
-      image: "/projects/project2.png",
+      image: "./projects/project2.png",
       description: "Flutter-based mobile banking application with intuitive UI and secure transactions.",
       size: 'normal'
     },
@@ -35,7 +35,7 @@ const Projects: React.FC = () => {
       id: 3,
       title: "Dashboard Analytics",
       category: "Data Analysis",
-      image: "/projects/project3.png",
+      image: "./projects/project3.png",
       description: "Comprehensive data visualization dashboard for business intelligence and insights.",
       size: 'normal'
     },
@@ -43,7 +43,7 @@ const Projects: React.FC = () => {
       id: 4,
       title: "Brand Identity Design",
       category: "UI/UX",
-      image: "/projects/project4.png",
+      image: "./projects/project4.png",
       description: "Complete brand identity design including logo, color palette, and design system.",
       size: 'normal'
     },
@@ -51,7 +51,7 @@ const Projects: React.FC = () => {
       id: 5,
       title: "Portfolio Website",
       category: "Web Dev",
-      image: "/projects/project5.png",
+      image: "./projects/project5.png",
       description: "Clean and modern portfolio website showcasing creative works and projects.",
       size: 'normal'
     }
