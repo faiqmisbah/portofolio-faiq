@@ -40,9 +40,9 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="w-full max-w-7xl px-4 md:px-10 lg:px-20 py-20 mb-10">
+    <section id="contact" className="w-full max-w-7xl px-4 md:px-10 lg:px-20 py-10 mb-6">
       
-      <div className="flex flex-col gap-4 mb-12 text-center md:text-left">
+      <div className="flex flex-col gap-4 mb-8 text-center md:text-left">
         <h2 className="text-3xl md:text-5xl font-black leading-tight text-white">
           Let's Connect
         </h2>
