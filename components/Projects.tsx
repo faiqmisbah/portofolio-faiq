@@ -58,7 +58,7 @@ const Projects: React.FC = () => {
   ];
 
   return (
-    <section id="projects" className="w-full max-w-7xl px-4 md:px-10 lg:px-20 py-20">
+    <section id="projects" className="w-full max-w-7xl px-4 md:px-10 lg:px-20 py-12">
       <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-10 gap-6">
         <div>
             <span className="text-primary font-bold tracking-wider uppercase text-xs mb-2 block">Portfolio</span>
