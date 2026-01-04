@@ -3,8 +3,8 @@ import { FaWhatsapp, FaInstagram, FaLinkedinIn, FaGithub } from 'react-icons/fa'
 
 const Footer: React.FC = () => {
   return (
-    <footer className="w-full border-t border-border-dark bg-background-dark py-12">
-      <div className="max-w-7xl mx-auto px-4 md:px-10 lg:px-20 flex flex-col md:flex-row justify-between items-center gap-8">
+    <footer className="w-full border-t border-border-dark bg-background-dark py-6">
+      <div className="max-w-7xl mx-auto px-4 md:px-10 lg:px-20 flex flex-col md:flex-row justify-between items-center gap-4">
         
         <div className="flex flex-col gap-2 items-center md:items-start">
             <div className="flex items-center gap-2 text-white">
