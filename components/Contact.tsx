@@ -58,7 +58,7 @@ const Contact: React.FC = () => {
           
           {/* Main Card */}
           <div className="rounded-2xl border border-border-dark bg-surface-dark p-8 flex flex-col gap-6 relative overflow-hidden group">
-            <div className="absolute -right-10 -top-10 size-40 bg-primary/20 rounded-full blur-3xl group-hover:bg-primary/30 transition-all duration-500"></div>
+            <div className="absolute right-0 top-0 size-40 bg-primary/20 rounded-full blur-3xl group-hover:bg-primary/30 transition-all duration-500 -translate-y-1/2 translate-x-1/4"></div>
             <div className="relative z-10">
                 <h3 className="text-xl font-bold text-white mb-2">Direct Contact</h3>
                 <p className="text-text-secondary text-sm mb-6">Drop me an email or reach out via WhatsApp.</p>

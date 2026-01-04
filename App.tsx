@@ -8,9 +8,9 @@ import Footer from './components/Footer';
 
 const App: React.FC = () => {
   return (
-    <div className="bg-background-dark text-white font-sans selection:bg-primary selection:text-white overflow-x-hidden">
+    <div className="bg-background-dark text-white font-sans selection:bg-primary selection:text-white overflow-x-hidden min-h-screen">
       <Navbar />
-      <main className="flex flex-col items-center w-full">
+      <main className="flex flex-col items-center w-full overflow-hidden">
         <Hero />
         <Skills />
         <Projects />
