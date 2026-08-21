@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FaiqDev | UI/UX Designer & Developer</title>
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,13 +20,14 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: '#4b2bee',
-                        'primary-hover': '#3a21b8',
-                        'background-dark': '#0f0c1d', // Very dark base
-                        'surface-dark': '#1e1933', // Slightly lighter for cards
-                        'surface-light': '#2a2442',
-                        'text-secondary': '#9b92c9',
-                        'border-dark': '#292348'
+                        primary: '#0c3836',
+                        'primary-hover': '#072725',
+                        'primary-accent': '#10b981',
+                        'background-dark': '#f8fafc', // Light slate base
+                        'surface-dark': '#ffffff', // Clean white cards
+                        'surface-light': '#f1f5f4', // Soft section highlight
+                        'text-secondary': '#475569', // Readable slate text
+                        'border-dark': '#e2e8f0' // Light border
                     },
                     fontFamily: {
                         sans: ['Manrope', 'sans-serif'],
@@ -39,8 +41,9 @@
             margin: 0;
             padding: 0;
             overflow-x: hidden;
-            background-color: #0f0c1d;
-            color: white;
+            background: linear-gradient(180deg, #ffffff 0%, #f4fbf7 50%, #ebf7f3 100%);
+            background-attachment: fixed;
+            color: #0f172a;
             width: 100%;
             max-width: 100vw;
         }
@@ -57,21 +60,20 @@
             width: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: #0f0c1d; 
+            background: #f8fafc; 
         }
         ::-webkit-scrollbar-thumb {
-            background: #292348; 
+            background: #cbd5e1; 
             border-radius: 4px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #4b2bee; 
+            background: #10b981; 
         }
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
     </style>
 
-<link rel="stylesheet" href="/index.css">
 <script type="importmap">
 {
   "imports": {
@@ -81,7 +83,8 @@
   }
 }
 </script>
-  <script type="module" crossorigin src="/portofolio-faiq/assets/index-BpJ43UrM.js"></script>
+  <script type="module" crossorigin src="/portofolio-faiq/assets/index-BZhg1ePQ.js"></script>
+  <link rel="stylesheet" crossorigin href="/portofolio-faiq/assets/index-bLF9_fP1.css">
 </head>
 <body>
     <div id="root"></div>
