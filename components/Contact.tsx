@@ -166,9 +166,32 @@ const Contact: React.FC = () => {
                     )}
                     
                     {submitStatus === 'error' && (
-                      <div className="flex items-center gap-2 p-4 rounded-lg bg-rose-50 border border-rose-200 text-rose-800">
-                        <span className="material-symbols-outlined text-rose-600">error</span>
-                        <span className="text-sm font-medium">Failed to send message. Please try again or email me directly.</span>
+                      <div className="flex flex-col gap-2 p-4 rounded-xl bg-rose-50 border border-rose-200 text-rose-800">
+                        <div className="flex items-center gap-2">
+                          <span className="material-symbols-outlined text-rose-600">error</span>
+                          <span className="text-sm font-semibold">EmailJS Credentials belum aktif/terhubung.</span>
+                        </div>
+                        <p className="text-xs text-slate-600">
+                          Jangan khawatir! Kamu tetap bisa mengirimkan pesan langsung ke email atau WhatsApp saya melalui tombol berikut:
+                        </p>
+                        <div className="flex flex-wrap gap-2 mt-1">
+                          <a 
+                            href="mailto:faiqmisbah019@gmail.com" 
+                            className="px-3 py-1.5 rounded-lg bg-[#0c3836] text-white font-bold text-xs hover:bg-[#072725] transition-colors inline-flex items-center gap-1 shadow-sm"
+                          >
+                            <span className="material-symbols-outlined text-sm">mail</span>
+                            Kirim via Email App
+                          </a>
+                          <a 
+                            href="https://wa.me/6285218555204" 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            className="px-3 py-1.5 rounded-lg bg-emerald-600 text-white font-bold text-xs hover:bg-emerald-700 transition-colors inline-flex items-center gap-1 shadow-sm"
+                          >
+                            <span className="material-symbols-outlined text-sm">phone</span>
+                            Kirim via WhatsApp
+                          </a>
+                        </div>
                       </div>
                     )}
 
