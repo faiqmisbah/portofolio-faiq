@@ -1,0 +1,8 @@
+/* Global Custom Styles */
+@layer base {
+  body {
+    background: linear-gradient(180deg, #ffffff 0%, #f4fbf7 50%, #ebf7f3 100%);
+    background-attachment: fixed;
+    color: #0f172a;
+  }
+}
