@@ -1,175 +1,104 @@
-# FaiqDev Portfolio
+<div align="center">
 
-Portfolio website modern untuk Faiq Misbah Yazdi - UI/UX Designer, Data Analyst & Developer.
+# 🌟 Faiq Misbah Yazdi — Personal Portfolio
 
-## 🚀 Features
+[![Live Demo](https://img.shields.io/badge/Live_Demo-https%3A%2F%2Ffaiqmisbah.github.io%2Fportofolio--faiq%2F-blueviolet?style=for-the-badge&logo=github)](https://faiqmisbah.github.io/portofolio-faiq/)
+[![React](https://img.shields.io/badge/React-19.0-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.8-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Vite](https://img.shields.io/badge/Vite-6.2-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
 
-- ✅ Responsive design (mobile-friendly)
-- ✅ Modern dark theme dengan glassmorphism
-- ✅ Contact form dengan EmailJS integration
-- ✅ Smooth animations & transitions
-- ✅ Social media integration (WhatsApp, Instagram, LinkedIn, GitHub)
-- ✅ Project showcase dengan filter categories
-- ✅ SEO optimized
+<p align="center">
+  A modern, high-performance portfolio website built with <b>React 19</b>, <b>TypeScript</b>, and <b>Vite</b>, featuring interactive project showcases, glassmorphism aesthetics, and direct contact integration.
+</p>
 
-## 🛠️ Tech Stack
+[🌐 **View Live Website**](https://faiqmisbah.github.io/portofolio-faiq/) · [📑 **Developer Guide (Panduan)**](panduan.md)
 
-- **Frontend**: React 19 + TypeScript
-- **Build Tool**: Vite 6
-- **Styling**: TailwindCSS
-- **Icons**: Material Symbols
-- **Email Service**: EmailJS
-
-## 📋 Prerequisites
-
-- Node.js (v16 atau lebih baru)
-- npm atau yarn
-
-## 🏃 Run Locally
-
-1. **Install dependencies:**
-
-   ```bash
-   npm install
-   ```
-
-2. **Setup EmailJS (untuk contact form):**
-
-   - Baca instruksi lengkap di [EMAILJS_SETUP.md](EMAILJS_SETUP.md)
-   - Copy `.env.example` menjadi `.env`
-   - Isi credentials EmailJS Anda
-
-3. **Run development server:**
-
-   ```bash
-   npm run dev
-   ```
-
-4. **Buka browser:**
-   - Local: http://localhost:3000/
-
-## 📸 Mengelola Foto
-
-Baca panduan lengkap di [FOTO_GUIDE.md](FOTO_GUIDE.md) untuk:
-
-- Cara mengganti foto profil
-- Cara menambah/edit foto projects
-- Tips optimasi foto
-- Troubleshooting
-
-## 📁 Struktur Folder
-
-````
-faiqPortofolio/
-├── components/
-│   ├── Hero.tsx          # Hero section dengan profil
-│   ├── Skills.tsx        # Skills & expertise
-│   ├── Projects.tsx      # Project showcase
-│   ├── Contact.tsx       # Contact form
-│   ├── Navbar.tsx        # Navigation bar
-│   └── Footer.tsx        # Footer dengan social links
-├── public/
-│   ├── profile.jpg       # Foto profil Anda
-│   └── projects/         # Foto-foto project
-├── App.tsx               # Main app component
-├── index.tsx             # Entry point
-├── .env                  # EmailJS credentials (jangan di-commit!)
-└── README.md             # File ini
-
-## 📧 Contact Form Setup
-
-Contact form menggunakan EmailJS untuk mengirim email langsung ke Gmail Anda.
-
-**Setup lengkap ada di:** [EMAILJS_SETUP.md](EMAILJS_SETUP.md)
-
-### Quick Start:
-1. Daftar di https://www.emailjs.com/
-2. Setup Gmail service
-3. Buat email template
-4. Copy credentials ke `.env`
-5. Restart server
-
-## 🎨 Personalisasi
-
-### Update Profil
-Edit [components/Hero.tsx](components/Hero.tsx):
-- Nama & bio
-- Stats (years experience, projects)
-
-### Update Skills
-Edit [components/Skills.tsx](components/Skills.tsx):
-- Tambah/hapus skills
-- Ganti icon
-
-### Update Projects
-Edit [components/Projects.tsx](components/Projects.tsx):
-- Tambah/edit project details
-- Ganti foto (di folder `public/projects/`)
-- Atur size (large/normal)
-
-### Update Contact Info
-Edit [components/Contact.tsx](components/Contact.tsx):
-- Email
-- WhatsApp number
-- Location
-
-### Update Social Media
-Edit [components/Footer.tsx](components/Footer.tsx):
-- Link ke profil sosmed Anda
-
-## 🚢 Deploy
-
-### Deploy ke Vercel (Rekomendasi)
-
-1. Push code ke GitHub
-2. Import project di https://vercel.com/
-3. Tambahkan environment variables:
-   - `VITE_EMAILJS_SERVICE_ID`
-   - `VITE_EMAILJS_TEMPLATE_ID`
-   - `VITE_EMAILJS_PUBLIC_KEY`
-4. Deploy!
-
-### Deploy ke Netlify
-
-1. Push code ke GitHub
-2. Import project di https://netlify.com/
-3. Build command: `npm run build`
-4. Publish directory: `dist`
-5. Tambahkan environment variables (sama seperti Vercel)
-
-## 📝 Scripts
-
-```bash
-npm run dev      # Run development server
-npm run build    # Build for production
-npm run preview  # Preview production build
-````
-
-## 🔒 Security
-
-- File `.env` sudah ada di `.gitignore` (jangan commit credentials!)
-- Environment variables aman di hosting platform
-- Form validation untuk prevent spam
-
-## 📞 Contact
-
-**Faiq Misbah Yazdi**
-
-- Email: faiqmisbah019@gmail.com
-- WhatsApp: +62 852-1855-5204
-- LinkedIn: https://www.linkedin.com/in/faiq-misbah/
-- GitHub: https://github.com/faiqmisbah
-- Instagram: https://www.instagram.com/faiqmisbah_/
-- YouTube: https://www.youtube.com/@faiqmisbahy
-
-## 📄 License
-
-© 2026 FaiqDev Portfolio. All rights reserved.
+</div>
 
 ---
 
-Made with ❤️ by Faiq Misbah Yazdi
+## 📌 Preview
 
+<div align="center">
+  <img src="public/projects/Porto.png" alt="Faiq Dev Portfolio Showcase" width="90%" style="border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);" />
+</div>
+
+---
+
+## ✨ Key Features
+
+- 🎨 **Modern Glassmorphism UI**: Sleek dark mode design paired with vibrant cyan highlights and micro-interactions.
+- 📂 **Interactive Project Showcase**: Filterable portfolio items featuring real-world projects in Web Development and UI/UX Design.
+- 🔍 **Detailed Project Modals**: Deep-dive into project problem statements, solutions, and technology stacks.
+- ⚡ **Lightning Fast Performance**: Built using Vite 6 & React 19 for instantaneous page loads and smooth transitions.
+- ✉️ **Integrated Contact Form**: Direct client inquiry delivery powered by EmailJS API.
+- 📱 **Fully Responsive**: Seamlessly optimized for smartphones, tablets, and desktop displays.
+
+---
+
+## 🛠️ Tech Stack & Tools
+
+| Category | Technologies Used |
+|---|---|
+| **Frontend Framework** | React 19, TypeScript |
+| **Build & Bundler** | Vite 6 |
+| **Styling & Design** | Custom CSS3, Glassmorphism, TailwindCSS utilities |
+| **Icons & Assets** | React Icons, Google Material Symbols |
+| **Services & Deployment**| EmailJS, GitHub Pages |
+
+---
+
+## 🚀 Featured Projects
+
+| Project | Category | Live Demo / Link |
+|---|---|---|
+| **FaiqDev Portfolio** | Web Dev | [Live Site](https://faiqmisbah.github.io/portofolio-faiq/) |
+| **Quote Generator** | Web Dev | [Live Demo](https://faiqmisbah.github.io/quote-generator/) |
+| **Sakuin Fintech Landing Page** | Web Dev | [Live Demo](https://sakuin-zeta.vercel.app/) |
+| **JAKI Design System** | UI/UX Design | Jakarta Smart City Ecosystem |
+| **E-Voting Platform Concept** | Web Dev / UI/UX | Digital Election Landing Page |
+| **FoodGo Web Platform** | Web Dev | Food Delivery App Interface |
+
+---
+
+## 💻 Quick Start & Installation
+
+To run this portfolio locally on your machine:
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/faiqmisbah/portofolio-faiq.git
+
+# 2. Navigate to the project directory
+cd portofolio-faiq
+
+# 3. Install dependencies
+npm install
+
+# 4. Start local development server
+npm run dev
 ```
 
-```
+Open `http://localhost:3000` in your browser to view the application.
+
+> 📖 **Need technical maintenance guidance?** Check out the full [Developer Guide (panduan.md)](panduan.md) for photo management, EmailJS setup, and folder structure details.
+
+---
+
+## 🤝 Connect With Me
+
+<div align="center">
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Faiq_Misbah-0A66C2?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/faiq-misbah/)
+[![GitHub](https://img.shields.io/badge/GitHub-faiqmisbah-181717?style=for-the-badge&logo=github)](https://github.com/faiqmisbah)
+[![Instagram](https://img.shields.io/badge/Instagram-@faiqmisbah__-E4405F?style=for-the-badge&logo=instagram)](https://www.instagram.com/faiqmisbah_/)
+[![YouTube](https://img.shields.io/badge/YouTube-@faiqmisbahy-FF0000?style=for-the-badge&logo=youtube)](https://www.youtube.com/@faiqmisbahy)
+[![Email](https://img.shields.io/badge/Email-faiqmisbah019@gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:faiqmisbah019@gmail.com)
+
+</div>
+
+---
+
+<div align="center">
+  <sub>Designed & Developed by <b>Faiq Misbah Yazdi</b> © 2026. All rights reserved.</sub>
+</div>

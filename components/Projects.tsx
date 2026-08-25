@@ -65,7 +65,8 @@ const Projects: React.FC = () => {
       image: "./projects/Sakuin.png",
       description: "A professional landing page for a fintech app, designed to build trust and highlight financial management features.",
       fullDescription: "I designed a professional landing page for 'Sakuin' a personal finance management application. Utilizing a trustworthy color palette and structured layout, I highlighted key asset management features to instill confidence in users and promote financial literacy through clear visual communication.",
-      size: 'normal'
+      size: 'normal',
+      link: "https://sakuin-zeta.vercel.app/"
     },
     {
       id: 5,
