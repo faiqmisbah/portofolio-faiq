@@ -388,7 +388,7 @@ const Projects: React.FC = () => {
       id: 8,
       title: "Music Recommender System",
       category: "Data Analysis",
-      year: "2025",
+      year: "2026",
       image: "./projects/SisRekMusik.png",
       description: "A 5-Fold Cross Validation study implementing a Content-Based Filtering music recommendation system powered by Word Embeddings and FAISS indexing.",
       fullDescription: "This research project implements a music recommendation system using a Content-Based Filtering approach powered by Word Embeddings to represent song lyrics. It systematically evaluates three distinct word embedding models (GloVe, FastText, Word2Vec) using a 5-Fold Cross Validation evaluation (K=5, Top-K=20). GloVe emerged as the best-performing model with a 92.65% Hit Rate, 0.4886 MRR, and 0.5792 NDCG score. The entire pipeline—from TF-IDF weighted embeddings and FAISS vector indexing to an interactive Gradio UI—is deployed live on Hugging Face Spaces.",
@@ -455,7 +455,7 @@ const Projects: React.FC = () => {
       id: 9,
       title: "Movie Recommender System",
       category: "Data Analysis",
-      year: "2025",
+      year: "2026",
       image: "./projects/SisRekMovie.png",
       description: "An explainable hybrid movie recommendation system combining Matrix Factorization (40%) and Content-Based Filtering (60%) with temporal evaluation and transparent reasoning.",
       fullDescription: "Beyond Ratings is a rigorous data analysis research project developing an explainable movie recommendation system. The solution implements a Weighted Hybrid Model combining Collaborative Filtering via Matrix Factorization (40%) and Content-Based Recommendation (60%) with an optimal hybrid alpha (α = 0.4). Designed with strict temporal development splits and locked final-test evaluations, the system generates Top-10 movie recommendations accompanied by human-readable explanations—detailing matching genres, previously liked reference movies, and component contribution scores via a Streamlit web app.",
@@ -527,6 +527,102 @@ const Projects: React.FC = () => {
       size: 'normal',
       link: "https://movie-recommendationsystemm.streamlit.app/",
       github: "https://github.com/faiqmisbah/movie-recommendation"
+    },
+    {
+      id: 10,
+      title: "Novel Recommender System",
+      category: "Data Analysis",
+      year: "2026",
+      image: "./projects/SisRekNovel.png",
+      description: "An explainable hybrid novel recommendation system combining Collaborative Filtering (90%) and Content-Based Filtering (10%) with cold-start evaluation, diversity analysis, and transparent recommendation scores.",
+      fullDescription: "Novel Recommender is a rigorous data analysis research project developing a hybrid recommendation system for Fantasy & Paranormal novels. The solution combines Collaborative Filtering (90%) based on user–book interaction patterns and Content-Based Filtering (10%) using TF-IDF representations of book metadata, with an optimal hybrid alpha (α = 0.90). The system is evaluated using Precision@K, Recall@K, NDCG@K, catalog coverage, novelty, hit rate, popularity bias, and cold-start performance across different levels of known user interactions. The final model generates personalized Top-10 novel recommendations through a Streamlit web application, displaying hybrid, collaborative, and content-based scores to provide transparent insight into how each recommendation is ranked.",
+      tags: ["Python", "Hybrid Model (α=0.90)", "User-Based CF", "TF-IDF & Content-Based", "Cold-Start Evaluation", "Streamlit"],
+      metrics: [
+        { label: "Hybrid Alpha (α)", value: "0.90 (90% CF / 10% CB)" },
+        { label: "NDCG@10 Score", value: "13.0%" },
+        { label: "Recall@10 Score", value: "12.8%" },
+        { label: "Catalog Coverage", value: "36.1%" }
+      ],
+      businessQuestions: [
+        "How to balance Collaborative Filtering and Content-Based Filtering to optimize recommendation precision?",
+        "How does recommendation quality (NDCG@K, Recall@K) perform under cold-start conditions with limited user history (1, 3, 5 interactions)?",
+        "What are the trade-offs between relevance, catalog coverage, novelty, and popularity bias in hybrid novel recommendation?",
+        "How to deliver transparent and explainable Top-10 recommendation score breakdowns in an interactive web app?"
+      ],
+      keyInsights: [
+        {
+          title: "Optimal Hybrid Weighting (α = 0.90)",
+          description: "Combining 90% Collaborative Filtering with 10% Content-Based Filtering produced the highest overall ranking performance (NDCG@10 = 13.0%, Recall@10 = 12.8%)."
+        },
+        {
+          title: "Collaborative Filtering Dominance in Relevance",
+          description: "User-based collaborative filtering provided the strongest relevance signals, outperforming Content-Based and Popularity baselines by over 3x in NDCG@10."
+        },
+        {
+          title: "Content-Based Synergy for Coverage & Novelty",
+          description: "TF-IDF book metadata representations expanded catalog coverage (44.9% CB vs 35.7% CF) and novelty (12.4 CB vs 5.2 CF), helping surface long-tail titles."
+        },
+        {
+          title: "Cold-Start Resiliency & Interaction Trajectory",
+          description: "Evaluation across sparse interaction levels showed steady ranking improvements as known items increased (NDCG@10 grew from 2.85% at 1 interaction to 3.93% at 5 interactions)."
+        },
+        {
+          title: "Popularity Bias Transparency",
+          description: "Rigorous evaluation highlighted that 93.41% of hybrid recommendations originate from the top 20% most popular titles, exposing key trade-offs in user interaction density."
+        }
+      ],
+      methodology: [
+        { step: "01", title: "Data Ingestion & Cleaning", description: "Processed and filtered 62,168 books, 49,980 users, and 3,070,371 interactions in the Fantasy & Paranormal domain." },
+        { step: "02", title: "Dual Engine Modeling", description: "Constructed User-Item Cosine Similarity matrix for CF and TF-IDF vector matrix (62,168 x 80,000) for book metadata." },
+        { step: "03", title: "Hybrid Optimization (α=0.90)", description: "Normalized component scores and evaluated hybrid alpha combinations across Precision@K, Recall@K, NDCG@K, Coverage, and Novelty." },
+        { step: "04", title: "Cold-Start & Bias Analysis", description: "Tested recommendation degradation at 1, 3, and 5 known interactions and measured top-20% popularity bias concentration." },
+        { step: "05", title: "Streamlit Deployment", description: "Built an interactive web app displaying Top-10 novel recommendations with transparent score breakdowns (CF vs Content)." }
+      ],
+      gallery: [
+        {
+          title: "Top-10 Model Performance Comparison",
+          image: "./projects/novel/01_model_performance_at10.png",
+          caption: "Evaluating Precision@10, Recall@10, and NDCG@10 across Popularity, Content-Based, Item-CF, and Hybrid (α=0.90) models."
+        },
+        {
+          title: "Top-5 Model Performance Comparison",
+          image: "./projects/novel/02_model_performance_at5.png",
+          caption: "Performance metrics at K=5 cutoff demonstrating top-rank precision and early recall characteristics."
+        },
+        {
+          title: "Catalog Coverage vs NDCG Trade-Off",
+          image: "./projects/novel/03b_coverage_vs_ndcg_fixed.png",
+          caption: "Analyzing catalog coverage percentage against ranking accuracy (NDCG@10) for all evaluated recommendation algorithms."
+        },
+        {
+          title: "Novelty vs Hit Rate Analysis",
+          image: "./projects/novel/04b_novelty_vs_hit_rate_fixed.png",
+          caption: "Trade-off analysis comparing recommendation novelty (serendipity of long-tail items) with overall Hit Rate@10."
+        },
+        {
+          title: "Popularity Bias Concentration",
+          image: "./projects/novel/05_popularity_bias.png",
+          caption: "Measuring the percentage of recommendations derived from the top 20% most popular items across models."
+        },
+        {
+          title: "Cold-Start Performance Summary",
+          image: "./projects/novel/06c_cold_start_summary.png",
+          caption: "Evaluation of NDCG@K and Recall@K trajectory across sparse user profiles with 1, 3, and 5 known interactions."
+        },
+        {
+          title: "Cold-Start NDCG@K Evaluation",
+          image: "./projects/novel/06b_cold_start_ndcg_fixed.png",
+          caption: "Detailed NDCG progression curves showing ranking improvement as user interaction context expands."
+        },
+        {
+          title: "Cold-Start Recall@K Evaluation",
+          image: "./projects/novel/07b_cold_start_recall_fixed.png",
+          caption: "Recall progression curves under extreme cold-start constraints across different item cutoff thresholds."
+        }
+      ],
+      tools: ["Python", "Pandas", "Scikit-Learn", "TF-IDF", "Collaborative Filtering", "Streamlit", "Matplotlib / Seaborn"],
+      size: 'normal',
+      github: "https://github.com/faiqmisbah"
     }
   ];
 
