@@ -68,6 +68,21 @@ const certificationsData: Certification[] = [
       'Become an AI-Powered Marketer',
     ],
   },
+  {
+    id: 'azure-ai-fundamentals',
+    title: 'Azure AI Fundamentals',
+    provider: 'Microsoft & elevAIte',
+    period: '2025',
+    category: 'AI & Cloud',
+    icon: 'cloud',
+    fullDescription:
+      'A foundational certification course covering artificial intelligence concepts and Microsoft Azure AI services, including machine learning workloads, computer vision, natural language processing (NLP), and conversational AI architecture on Azure.',
+    driveLink: 'https://drive.google.com/drive/folders/1U3O37NqA57jnPRRXDMkiUUPkPertTMrm?usp=sharing',
+    courseWebsite: 'https://learn.microsoft.com/en-us/credentials/certifications/azure-ai-fundamentals/',
+    modules: [
+      'Preparation Course for Azure AI Fundamentals (AI-900)',
+    ],
+  },
 ];
 
 const Certifications: React.FC = () => {
