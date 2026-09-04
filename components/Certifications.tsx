@@ -83,6 +83,26 @@ const certificationsData: Certification[] = [
       'Preparation Course for Azure AI Fundamentals (AI-900)',
     ],
   },
+  {
+    id: 'hp-life-courses',
+    title: 'HP LIFE Courses',
+    provider: 'HP LIFE Foundation',
+    period: '2026',
+    category: 'AI & Business IT',
+    icon: 'school',
+    fullDescription:
+      'A practical skill-building course collection from HP LIFE covering artificial intelligence foundations, critical thinking in the AI era, data analytics, cybersecurity awareness, design thinking, and business IT strategy.',
+    driveLink: 'https://drive.google.com/drive/folders/1XYJonq1bJ0tMaSs_F3993P437AT-kr_h?usp=sharing',
+    courseWebsite: 'https://www.life-global.org/allcourses',
+    modules: [
+      'Critical Thinking in the AI Era',
+      'AI for Beginners',
+      'Data Science & Analytics',
+      'Introduction to Cybersecurity Awareness',
+      'Design Thinking',
+      'IT for Business Success',
+    ],
+  },
 ];
 
 const Certifications: React.FC = () => {
