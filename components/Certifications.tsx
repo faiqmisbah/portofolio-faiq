@@ -23,7 +23,7 @@ const certificationsData: Certification[] = [
     icon: 'psychology',
     fullDescription:
       'A comprehensive learning path from Anthropic mastering the Claude AI ecosystem. This series covers foundational to advanced AI topics, including LLM prompt engineering, building agentic AI workflows with subagents and agent skills, integrating the Anthropic API across multi-cloud platforms (AWS Bedrock & GCP), and implementing Model Context Protocol (MCP) for scalable AI applications.',
-    driveLink: 'https://drive.google.com/drive/folders/1UX4rqP5PCPAC_m2-e35ByOo5MKjK45Wp?usp=sharing',
+    driveLink: 'https://drive.google.com/drive/folders/11bIxXwK806DL_WQ-FovfRIysJXl1YMLv?usp=sharing',
     courseWebsite: 'https://anthropic.skilljar.com/',
     modules: [
       'Claude 101',
@@ -48,6 +48,24 @@ const certificationsData: Certification[] = [
       'AI Fluency for Builders',
       'AI Fluency for pK-12 Educators',
       'AI Fluency for Creative Work',
+    ],
+  },
+  {
+    id: 'semrush-courses',
+    title: 'Semrush Courses',
+    provider: 'Semrush Academy An Adobe Company',
+    period: '2026',
+    category: 'AI',
+    icon: 'campaign',
+    fullDescription:
+      'A specialized learning path from Semrush Academy focused on leveraging AI tools for modern search optimization, PR strategies, brand visibility, and AI-powered marketing execution.',
+    driveLink: 'https://drive.google.com/drive/folders/1w97gCZ4P_IUysGVRrVWyuJpxiOj0jR5p?usp=sharing',
+    courseWebsite: 'https://www.semrush.com/academy/courses/',
+    modules: [
+      'AI Search Operating System',
+      'AI PR Toolkit Crash Course',
+      'AI Visibility Toolkit Crash Course',
+      'Become an AI-Powered Marketer',
     ],
   },
 ];
