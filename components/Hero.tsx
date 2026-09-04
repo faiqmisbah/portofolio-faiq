@@ -46,13 +46,11 @@ const Hero: React.FC = () => {
               <span>Portofolio PDF</span>
             </a>
             <a
-              href="https://drive.google.com/drive/folders/1UX4rqP5PCPAC_m2-e35ByOo5MKjK45Wp?usp=sharing"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#certificates"
               className="flex items-center justify-center gap-2.5 h-12 px-6 rounded-xl bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-800 text-base font-bold transition-all hover:-translate-y-1 shadow-sm"
             >
               <span className="material-symbols-outlined text-xl text-emerald-700">workspace_premium</span>
-              <span>Certificate</span>
+              <span>Certificates</span>
             </a>
           </div>
 
