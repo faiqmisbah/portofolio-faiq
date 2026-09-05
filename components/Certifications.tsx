@@ -113,11 +113,9 @@ const certificationsData: Certification[] = [
     fullDescription:
       'Official certification from Google for Education validating foundational skills, technical competencies, and practical proficiency in utilizing Google Gemini AI models and tools within higher education, research, and productivity environments.',
     driveLink: 'https://drive.google.com/file/d/1J4_Dmv2Km0uTw-hQ3AqwKQZNNSfHjRDr/view?usp=sharing',
-    courseWebsite: 'https://edu.google.com/',
+    courseWebsite: 'https://edu.google.accredible.com/b07feed1-9f3b-4827-9635-558be4837166#acc.DBhExFIw',
     modules: [
-      'Google Gemini AI Fundamentals',
-      'AI Tools for Higher Education & Research',
-      'Google for Education AI Competency',
+      'Gemini Certification for Students',
     ],
   },
 ];
