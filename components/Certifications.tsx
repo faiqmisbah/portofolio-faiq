@@ -77,7 +77,7 @@ const certificationsData: Certification[] = [
     icon: 'cloud',
     fullDescription:
       'A foundational certification course covering artificial intelligence concepts and Microsoft Azure AI services, including machine learning workloads, computer vision, natural language processing (NLP), and conversational AI architecture on Azure.',
-    driveLink: 'https://drive.google.com/drive/folders/1U3O37NqA57jnPRRXDMkiUUPkPertTMrm?usp=sharing',
+    driveLink: 'https://drive.google.com/file/d/1JcX7ITUspLy0o6N8miFpGWn6iejrQSXt/view?usp=sharing',
     courseWebsite: 'https://learn.microsoft.com/en-us/credentials/certifications/azure-ai-fundamentals/',
     modules: [
       'Preparation Course for Azure AI Fundamentals (AI-900)',
@@ -101,6 +101,23 @@ const certificationsData: Certification[] = [
       'Introduction to Cybersecurity Awareness',
       'Design Thinking',
       'IT for Business Success',
+    ],
+  },
+  {
+    id: 'google-gemini-certified',
+    title: 'Gemini Certified Student',
+    provider: 'Google for Education',
+    period: '2026 - 2029',
+    category: 'AI & LLMs',
+    icon: 'auto_awesome',
+    fullDescription:
+      'Official certification from Google for Education validating foundational skills, technical competencies, and practical proficiency in utilizing Google Gemini AI models and tools within higher education, research, and productivity environments.',
+    driveLink: 'https://drive.google.com/file/d/1J4_Dmv2Km0uTw-hQ3AqwKQZNNSfHjRDr/view?usp=sharing',
+    courseWebsite: 'https://edu.google.com/',
+    modules: [
+      'Google Gemini AI Fundamentals',
+      'AI Tools for Higher Education & Research',
+      'Google for Education AI Competency',
     ],
   },
 ];
