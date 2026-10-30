@@ -622,7 +622,8 @@ const Projects: React.FC = () => {
       ],
       tools: ["Python", "Pandas", "Scikit-Learn", "TF-IDF", "Collaborative Filtering", "Streamlit", "Matplotlib / Seaborn"],
       size: 'normal',
-      github: "https://github.com/faiqmisbah"
+      link: "https://novel-recommendation.streamlit.app/",
+      github: "https://github.com/faiqmisbah/novel-recommendation"
     }
   ];
 
