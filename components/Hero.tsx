@@ -26,7 +26,7 @@ const Hero: React.FC = () => {
 
           <div className="flex flex-wrap justify-center lg:justify-start gap-4 pt-4">
             <a
-              href="https://drive.google.com/file/d/1lwiE3EdkZ1_jBc2JHmbgMk1c6exiQ1Bl/view?usp=sharing"
+              href="https://drive.google.com/file/d/13GPtXOb1slVxrdeZdDiLCCkJoiHdZbdl/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center h-12 px-8 rounded-xl bg-[#0c3836] hover:bg-[#072725] text-white text-base font-bold transition-all shadow-lg shadow-[#0c3836]/20 hover:-translate-y-1"
@@ -37,7 +37,7 @@ const Hero: React.FC = () => {
               Contact Me
             </a>
             <a
-              href="https://drive.google.com/file/d/1nXLnntZkofpnS8z1aXRnTxIWLK4XR2P4/view?usp=sharing"
+              href="https://drive.google.com/file/d/19Q1saE0DidU65JxQdEipozUD2mKzgl22/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2.5 h-12 px-6 rounded-xl bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-800 text-base font-bold transition-all hover:-translate-y-1 shadow-sm"
