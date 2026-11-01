@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { FaFigma } from 'react-icons/fa';
 
 export interface MetricItem {
   label: string;
@@ -40,6 +41,7 @@ export interface Project {
   size: 'normal' | 'large';
   link?: string;
   github?: string;
+  figma?: string;
 }
 
 const Projects: React.FC = () => {
@@ -205,7 +207,8 @@ const Projects: React.FC = () => {
       ],
       tools: ["Figma", "Design Tokens", "Auto Layout", "Variants", "WCAG Guidelines"],
       size: 'normal',
-      github: "https://github.com/faiqmisbah"
+      link: "https://bit.ly/DesignSystemJAKI",
+      figma: "https://bit.ly/DesignSystemJAKI"
     },
     {
       id: 4,
@@ -624,6 +627,57 @@ const Projects: React.FC = () => {
       size: 'normal',
       link: "https://novel-recommendation.streamlit.app/",
       github: "https://github.com/faiqmisbah/novel-recommendation"
+    },
+    {
+      id: 11,
+      title: "StudyMate - Focus & Study Management",
+      category: "UI/UX",
+      year: "2026",
+      image: "./projects/StudyMate.png",
+      description: "A dedicated mobile app UI/UX design and interactive prototype exploring student time management, integrated Pomodoro focus tracking, daily goals, and analytics.",
+      fullDescription: "StudyMate is an end-to-end mobile app UI/UX design case study and interactive Figma prototype created to address students' time-management and concentration challenges. Developed strictly as a mobile product design concept based on a structured Product Requirements Document (PRD), the project focuses on intuitive mobile interaction architecture—unifying academic task planning, an integrated Pomodoro focus timer with automated session tracking, daily progress rings, and weekly productivity analytics into an engaging, distraction-free smartphone experience.",
+      tags: ["Figma", "Mobile UI/UX Design", "Interactive Prototype", "Product Design", "Pomodoro Technique", "PRD"],
+      metrics: [
+        { label: "Project Scope", value: "Mobile App Design Only" },
+        { label: "Deliverable", value: "Interactive Prototype" },
+        { label: "Core Modules", value: "4 MVP Modules" },
+        { label: "Focus Method", value: "Pomodoro Technique" }
+      ],
+      businessQuestions: [
+        "How to centralize academic task scheduling and focus tracking into a unified, distraction-free mobile UI?",
+        "How to integrate Pomodoro interval sessions directly with specific subject-based tasks and automatic logging?",
+        "How to visualize daily learning targets and productivity analytics to reinforce student accountability and consistency?",
+        "How to gracefully handle study interruptions and paused sessions without corrupting aggregated focus statistics?"
+      ],
+      keyInsights: [
+        {
+          title: "Seamless Task & Pomodoro Synergy",
+          description: "Connected academic task lists directly with active 25-minute Pomodoro focus cycles, automatically updating assignment completion statuses."
+        },
+        {
+          title: "Real-Time Daily Goal Accountability",
+          description: "Implemented live goal progress indicators tracking both daily study minutes and completed Pomodoro session counts."
+        },
+        {
+          title: "Actionable Productivity Analytics",
+          description: "Designed intuitive visual summaries illustrating weekly study trends, subject time distributions, and daily focus streaks."
+        },
+        {
+          title: "Distraction-Resilient UX Flows",
+          description: "Architected an intentional session-interruption confirmation flow to prevent false data logging when focus intervals are cut short."
+        }
+      ],
+      methodology: [
+        { step: "01", title: "Problem Discovery & PRD", description: "Researched student time-management challenges and established detailed functional requirements (TSK, PMD, GOL, ANL)." },
+        { step: "02", title: "Information Architecture & Flows", description: "Mapped end-to-end user journeys for task creation, Pomodoro timer cycles, goal updates, and analytics review." },
+        { step: "03", title: "Mobile-First Wireframing", description: "Created low-fidelity layouts and navigation structures optimized for one-handed smartphone interaction." },
+        { step: "04", title: "Design System & Tokens", description: "Established cohesive typography, accessible contrast palettes, reusable input components, and timer states." },
+        { step: "05", title: "Interactive Prototyping", description: "Delivered high-fidelity mobile prototypes in Figma demonstrating active timer states, modals, and flow transitions." }
+      ],
+      tools: ["Figma", "FigJam", "Mobile UI/UX", "Interactive Prototyping", "Wireframing", "Design System"],
+      size: 'normal',
+      link: "http://tiny.cc/studymate",
+      figma: "http://tiny.cc/studymate"
     }
   ];
 
@@ -769,30 +823,47 @@ const Projects: React.FC = () => {
                   ))}
                 </div>
 
-                {/* Main Action CTAs (Includes Visit Live, GitHub Repo & Contact) */}
+                {/* Main Action CTAs (Includes Visit Live / Figma, GitHub Repo & Contact) */}
                 <div className="flex flex-wrap items-center gap-3 pt-4 border-b border-slate-200 pb-8">
-                  {selectedProject.link && (
-                    <a
-                      href={selectedProject.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#0c3836] hover:bg-[#072725] text-white font-bold text-xs sm:text-sm shadow-md shadow-[#0c3836]/20 transition-all transform hover:-translate-y-0.5"
-                    >
-                      <span>Visit Live Project</span>
-                      <span className="material-symbols-outlined text-base">open_in_new</span>
-                    </a>
-                  )}
+                  {selectedProject.category === 'UI/UX' ? (
+                    (selectedProject.figma || selectedProject.link) && (
+                      <a
+                        href={selectedProject.figma || selectedProject.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#0c3836] hover:bg-[#072725] text-white font-bold text-xs sm:text-sm shadow-md shadow-[#0c3836]/20 transition-all transform hover:-translate-y-0.5"
+                      >
+                        <FaFigma className="text-sm" />
+                        <span>Figma Prototype & Design</span>
+                        <span className="material-symbols-outlined text-base">open_in_new</span>
+                      </a>
+                    )
+                  ) : (
+                    <>
+                      {selectedProject.link && (
+                        <a
+                          href={selectedProject.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#0c3836] hover:bg-[#072725] text-white font-bold text-xs sm:text-sm shadow-md shadow-[#0c3836]/20 transition-all transform hover:-translate-y-0.5"
+                        >
+                          <span>Visit Live Project</span>
+                          <span className="material-symbols-outlined text-base">open_in_new</span>
+                        </a>
+                      )}
 
-                  {selectedProject.github && (
-                    <a
-                      href={selectedProject.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs sm:text-sm shadow-md transition-all transform hover:-translate-y-0.5"
-                    >
-                      <span className="material-symbols-outlined text-base">code</span>
-                      <span>GitHub Repo</span>
-                    </a>
+                      {selectedProject.github && (
+                        <a
+                          href={selectedProject.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs sm:text-sm shadow-md transition-all transform hover:-translate-y-0.5"
+                        >
+                          <span className="material-symbols-outlined text-base">code</span>
+                          <span>GitHub Repo</span>
+                        </a>
+                      )}
+                    </>
                   )}
 
                   <a
@@ -1005,31 +1076,48 @@ const Projects: React.FC = () => {
 
             </div>
 
-            {/* Modal Footer Fixed Bar (Contains Open Live, GitHub Repo & Close Case Study) */}
+            {/* Modal Footer Fixed Bar (Contains Open Live / Figma, GitHub Repo & Close Case Study) */}
             <div className="shrink-0 bg-slate-50 border-t border-slate-200 px-6 sm:px-8 py-4 flex items-center justify-between flex-wrap gap-3 z-10">
               <div className="flex flex-wrap items-center gap-2">
-                {selectedProject.link && (
-                  <a
-                    href={selectedProject.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#0c3836] hover:bg-[#072725] text-white font-bold text-xs sm:text-sm shadow-md transition-all"
-                  >
-                    <span>Open Live Application</span>
-                    <span className="material-symbols-outlined text-base">open_in_new</span>
-                  </a>
-                )}
+                {selectedProject.category === 'UI/UX' ? (
+                  (selectedProject.figma || selectedProject.link) && (
+                    <a
+                      href={selectedProject.figma || selectedProject.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#0c3836] hover:bg-[#072725] text-white font-bold text-xs sm:text-sm shadow-md transition-all"
+                    >
+                      <FaFigma className="text-sm" />
+                      <span>Open Figma Link</span>
+                      <span className="material-symbols-outlined text-base">open_in_new</span>
+                    </a>
+                  )
+                ) : (
+                  <>
+                    {selectedProject.link && (
+                      <a
+                        href={selectedProject.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#0c3836] hover:bg-[#072725] text-white font-bold text-xs sm:text-sm shadow-md transition-all"
+                      >
+                        <span>Open Live Application</span>
+                        <span className="material-symbols-outlined text-base">open_in_new</span>
+                      </a>
+                    )}
 
-                {selectedProject.github && (
-                  <a
-                    href={selectedProject.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs sm:text-sm shadow-md transition-all"
-                  >
-                    <span className="material-symbols-outlined text-base">code</span>
-                    <span>GitHub Repo</span>
-                  </a>
+                    {selectedProject.github && (
+                      <a
+                        href={selectedProject.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs sm:text-sm shadow-md transition-all"
+                      >
+                        <span className="material-symbols-outlined text-base">code</span>
+                        <span>GitHub Repo</span>
+                      </a>
+                    )}
+                  </>
                 )}
               </div>
 
