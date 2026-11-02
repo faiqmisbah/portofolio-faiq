@@ -26,7 +26,7 @@ const Hero: React.FC = () => {
 
           <div className="flex flex-wrap justify-center lg:justify-start gap-4 pt-4">
             <a
-              href="https://drive.google.com/file/d/13GPtXOb1slVxrdeZdDiLCCkJoiHdZbdl/view?usp=sharing"
+              href="https://drive.google.com/file/d/1TLSAnp8q_5o6U0f3P7mCUbRNp7U1rbs7/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center h-12 px-8 rounded-xl bg-[#0c3836] hover:bg-[#072725] text-white text-base font-bold transition-all shadow-lg shadow-[#0c3836]/20 hover:-translate-y-1"
