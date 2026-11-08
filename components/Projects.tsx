@@ -630,54 +630,105 @@ const Projects: React.FC = () => {
     },
     {
       id: 11,
-      title: "StudyMate - Focus & Study Management",
+      title: "faiq-kun - Anime Streaming Platform",
       category: "UI/UX",
       year: "2026",
-      image: "./projects/StudyMate.png",
-      description: "A dedicated mobile app UI/UX design and interactive prototype exploring student time management, integrated Pomodoro focus tracking, daily goals, and analytics.",
-      fullDescription: "StudyMate is an end-to-end mobile app UI/UX design case study and interactive Figma prototype created to address students' time-management and concentration challenges. Developed strictly as a mobile product design concept based on a structured Product Requirements Document (PRD), the project focuses on intuitive mobile interaction architecture—unifying academic task planning, an integrated Pomodoro focus timer with automated session tracking, daily progress rings, and weekly productivity analytics into an engaging, distraction-free smartphone experience.",
-      tags: ["Figma", "Mobile UI/UX Design", "Interactive Prototype", "Product Design", "Pomodoro Technique", "PRD"],
+      image: "./projects/faiqkun.png",
+      description: "A modern, ad-free anime streaming web interface featuring friction-free instant viewing, local browser progress persistence, broadcast schedules, and multi-server routing.",
+      fullDescription: "faiq-kun is a high-fidelity web UI/UX design crafted for anime enthusiasts who value clean, distraction-free viewing. Addressing common frustrations with aggressive pop-up advertisements, slow load times, and forced account creation, the interface introduces an intuitive '100% Free & No-Login' ecosystem. The experience is powered by client-side local storage that automatically preserves playback timestamps and watch history directly in the browser, complemented by multi-server routing (Indonesian Fast CDN, 1080p Ultra HD, and data-saver modes), weekly airing schedules (WIB), and quick keyboard shortcuts for an effortless streaming flow.",
+      tags: ["Figma", "UI/UX Design", "Streaming Platform", "Web App UI", "Local Storage UX", "Design System"],
       metrics: [
-        { label: "Project Scope", value: "Mobile App Design Only" },
-        { label: "Deliverable", value: "Interactive Prototype" },
-        { label: "Core Modules", value: "4 MVP Modules" },
-        { label: "Focus Method", value: "Pomodoro Technique" }
+        { label: "Platform Type", value: "Web Streaming UI" },
+        { label: "User Friction", value: "0% Login Required" },
+        { label: "Storage Architecture", value: "Local Browser Memory" },
+        { label: "Ad Experience", value: "Zero Aggressive Pop-ups" }
       ],
       businessQuestions: [
-        "How to centralize academic task scheduling and focus tracking into a unified, distraction-free mobile UI?",
-        "How to integrate Pomodoro interval sessions directly with specific subject-based tasks and automatic logging?",
-        "How to visualize daily learning targets and productivity analytics to reinforce student accountability and consistency?",
-        "How to gracefully handle study interruptions and paused sessions without corrupting aggregated focus statistics?"
+        "How to eliminate user friction during video streaming without requiring mandatory account registration?",
+        "How to maintain user watch history and episode playback timestamps purely through client-side local storage?",
+        "How to design an intuitive anime release schedule and multi-server selector tailored for local Indonesian ISP routing?",
+        "How to structure content discovery across genre filters, trending spotlights, and keyboard-driven player controls?"
       ],
       keyInsights: [
         {
-          title: "Seamless Task & Pomodoro Synergy",
-          description: "Connected academic task lists directly with active 25-minute Pomodoro focus cycles, automatically updating assignment completion statuses."
+          title: "Frictionless Instant Playback",
+          description: "Designed a transparent 'No Login Required' onboarding model where users can immediately stream episodes without registration gates or intrusive pop-up redirects."
         },
         {
-          title: "Real-Time Daily Goal Accountability",
-          description: "Implemented live goal progress indicators tracking both daily study minutes and completed Pomodoro session counts."
+          title: "Browser-Based Local Progress Storage",
+          description: "Implemented a 'Continue Watching' module that silently saves episode progress, minute timestamps, and completion rates directly to browser local storage."
         },
         {
-          title: "Actionable Productivity Analytics",
-          description: "Designed intuitive visual summaries illustrating weekly study trends, subject time distributions, and daily focus streaks."
+          title: "Localized Broadcasting Schedule",
+          description: "Structured an airing timetable calendar organized by day of the week and WIB timezone, allowing fans to track upcoming episode drops effortlessly."
         },
         {
-          title: "Distraction-Resilient UX Flows",
-          description: "Architected an intentional session-interruption confirmation flow to prevent false data logging when focus intervals are cut short."
+          title: "Multi-Server & Quality Switching",
+          description: "Created intuitive selectors for Indonesian fast CDN servers, alternative 1080p streams, and data-saving mobile profiles with visible latency indicators."
         }
       ],
       methodology: [
-        { step: "01", title: "Problem Discovery & PRD", description: "Researched student time-management challenges and established detailed functional requirements (TSK, PMD, GOL, ANL)." },
-        { step: "02", title: "Information Architecture & Flows", description: "Mapped end-to-end user journeys for task creation, Pomodoro timer cycles, goal updates, and analytics review." },
-        { step: "03", title: "Mobile-First Wireframing", description: "Created low-fidelity layouts and navigation structures optimized for one-handed smartphone interaction." },
-        { step: "04", title: "Design System & Tokens", description: "Established cohesive typography, accessible contrast palettes, reusable input components, and timer states." },
-        { step: "05", title: "Interactive Prototyping", description: "Delivered high-fidelity mobile prototypes in Figma demonstrating active timer states, modals, and flow transitions." }
+        { step: "01", title: "User Pain Point Research", description: "Audited existing anime streaming platforms to identify frustrations around invasive ads, complicated servers, and forced logins." },
+        { step: "02", title: "Information Architecture", description: "Structured core user journeys: instant episode playback, resume watching, timetable exploration, and genre filtering." },
+        { step: "03", title: "Wireframing & Player UX", description: "Designed clean desktop layouts with high-contrast banners, episode cards, and dedicated keyboard navigation shortcuts." },
+        { step: "04", title: "Design System & Dark Theme", description: "Created cohesive UI tokens, typography scales, active status indicators, and badges for resolution & sub status." },
+        { step: "05", title: "High-Fidelity Interactive Prototype", description: "Developed responsive Figma components and interactive states for episode selection, server toggles, and filters." }
       ],
-      tools: ["Figma", "FigJam", "Mobile UI/UX", "Interactive Prototyping", "Wireframing", "Design System"],
+      tools: ["Figma", "UI/UX Design", "Streaming UI", "Wireframing", "Prototyping", "Design System"],
       size: 'normal',
-      link: "http://tiny.cc/studymate",
-      figma: "http://tiny.cc/studymate"
+      link: "http://tiny.cc/designfaiq",
+      figma: "http://tiny.cc/designfaiq"
+    },
+    {
+      id: 12,
+      title: "Kopi & Flour - Artisan Roastery & Bakehouse",
+      category: "UI/UX",
+      year: "2026",
+      image: "./projects/KopiFlour.png",
+      description: "An artisanal roastery and sourdough bakehouse website interface blending Nordic functional warmth with Japanese wabi-sabi aesthetics, featuring order-ahead flows and sanctuary exploration.",
+      fullDescription: "Kopi & Flour is an editorial e-commerce and brand experience web UI/UX design for a specialty coffee roastery and sourdough bakery. Grounded in the intersection of Scandinavian warmth (hygge) and Japanese wabi-sabi reverence for natural textures, the design crafts an unhurried, mindful digital atmosphere. The interface seamlessly balances artisanal storytelling—celebrating single-origin ethical bean sourcing and 72-hour cold-fermented bakes—with commercial utility, offering a streamlined 'Order Ahead' system, daily small-batch provisions catalog, whole bean subscriptions, and a serene physical store locator for the Senopati sanctuary.",
+      tags: ["Figma", "UI/UX Design", "Artisan Brand UI", "E-Commerce", "Wabi-Sabi Aesthetics", "Design System"],
+      metrics: [
+        { label: "Design Philosophy", value: "Nordic-Japanese Wabi-Sabi" },
+        { label: "Core Experience", value: "Bakehouse & Roastery E-Commerce" },
+        { label: "Ordering Feature", value: "Order Ahead & Bean Catalog" },
+        { label: "Customer Rating", value: "4.9 / 5.0 (1.2k+ Patrons)" }
+      ],
+      businessQuestions: [
+        "How to translate an artisan in-store sensory atmosphere (freshly baked sourdough & hand-poured coffee) into a digital brand experience?",
+        "How to balance mindful, slow-living brand storytelling with an efficient, conversion-friendly 'Order Ahead' user journey?",
+        "How to communicate single-origin bean transparency, ethical farm partnerships, and small-batch bakery schedules effectively?",
+        "How to design a peaceful physical storefront locator with operating hours, seating availability, and neighborhood directions?"
+      ],
+      keyInsights: [
+        {
+          title: "Harmonious Wabi-Sabi & Nordic Visual Identity",
+          description: "Created an organic color palette, editorial serif typography, and generous negative space reflecting mindful mornings and artisan craftsmanship."
+        },
+        {
+          title: "Daily Small-Batch Provisions Showcase",
+          description: "Structured a dynamic menu section with category filters (Filter Coffee, Artisan Bakes, Signatures) highlighting extraction times, fermentation hours, and pricing."
+        },
+        {
+          title: "Transparent Ethical Storytelling",
+          description: "Integrated core principle modules highlighting direct trade partnerships across Aceh, Toraja, and Sidama alongside 72-hour fermentation commitments."
+        },
+        {
+          title: "Sensory Neighborhood Sanctuary Guide",
+          description: "Designed a dedicated storefront explorer for the Senopati flagship with live seating status, bake restock schedules, amenities, and directional maps."
+        }
+      ],
+      methodology: [
+        { step: "01", title: "Brand Identity & Philosophy Discovery", description: "Defined the brand voice around slow living, wabi-sabi natural textures, and Scandinavian functional warmth." },
+        { step: "02", title: "E-Commerce User Flow Mapping", description: "Streamlined the ordering journey from menu discovery and bean roast selection to in-store pickup coordination." },
+        { step: "03", title: "Editorial Layout & Typography", description: "Paired elegant editorial serif headlines with clean utilitarian sans-serif for prices, badges, and nutritional specs." },
+        { step: "04", title: "Design System & Component Library", description: "Engineered Figma auto-layout cards, badge chips ('Seasonal', 'Best Seller', 'Freshly Baked'), and button states." },
+        { step: "05", title: "Responsive Interactive Prototyping", description: "Created high-fidelity desktop and mobile prototypes showcasing menu filtering, cart drawer, and interactive maps." }
+      ],
+      tools: ["Figma", "UI/UX Design", "Brand Experience", "E-Commerce UI", "Design System", "Prototyping"],
+      size: 'normal',
+      link: "http://tiny.cc/designfaiq",
+      figma: "http://tiny.cc/designfaiq"
     }
   ];
 

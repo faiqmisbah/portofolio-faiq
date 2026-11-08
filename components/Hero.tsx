@@ -26,7 +26,7 @@ const Hero: React.FC = () => {
 
           <div className="flex flex-wrap justify-center lg:justify-start gap-4 pt-4">
             <a
-              href="https://drive.google.com/file/d/1TLSAnp8q_5o6U0f3P7mCUbRNp7U1rbs7/view?usp=sharing"
+              href="https://drive.google.com/drive/folders/1Toqrb2Y98E3tREMoGvie6ZGJDnXex5q2?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center h-12 px-8 rounded-xl bg-[#0c3836] hover:bg-[#072725] text-white text-base font-bold transition-all shadow-lg shadow-[#0c3836]/20 hover:-translate-y-1"
@@ -37,7 +37,7 @@ const Hero: React.FC = () => {
               Contact Me
             </a>
             <a
-              href="https://drive.google.com/file/d/19Q1saE0DidU65JxQdEipozUD2mKzgl22/view?usp=sharing"
+              href="https://drive.google.com/drive/folders/1Toqrb2Y98E3tREMoGvie6ZGJDnXex5q2?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2.5 h-12 px-6 rounded-xl bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-800 text-base font-bold transition-all hover:-translate-y-1 shadow-sm"
@@ -62,7 +62,7 @@ const Hero: React.FC = () => {
             </div>
             <div className="w-px h-10 bg-slate-200"></div>
             <div>
-              <p className="text-3xl font-extrabold text-slate-900">8+</p>
+              <p className="text-3xl font-extrabold text-slate-900">10+</p>
               <p className="text-xs text-slate-500 uppercase tracking-wide font-semibold mt-1">Projects</p>
             </div>
           </div>

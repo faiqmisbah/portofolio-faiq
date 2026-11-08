@@ -1,12 +1,21 @@
 import React from 'react';
+import { FaFigma } from 'react-icons/fa';
+import { SiGooglecolab } from 'react-icons/si';
+
+interface SkillItem {
+  name: string;
+  icon: string | React.ReactNode;
+}
 
 const Skills: React.FC = () => {
-  const skills = [
+  const skills: SkillItem[] = [
     { name: 'ReactJS', icon: 'code' },
     { name: 'UI/UX Design', icon: 'brush' },
+    { name: 'Figma', icon: <FaFigma className="text-[20px]" /> },
     { name: 'Flutter', icon: 'phone_android' },
     { name: 'Canva', icon: 'design_services' },
     { name: 'Python', icon: 'terminal' },
+    { name: 'GoogleCollab', icon: <SiGooglecolab className="text-[20px]" /> },
     { name: 'HTML/CSS', icon: 'html' },
     { name: 'Data Analysis', icon: 'analytics' },
   ];
@@ -27,8 +36,12 @@ const Skills: React.FC = () => {
               key={index} 
               className="group flex h-12 items-center justify-center gap-x-3 rounded-xl bg-white border border-slate-200/80 px-6 shadow-sm hover:shadow-md hover:border-emerald-400 hover:bg-emerald-50/50 transition-all cursor-default hover:-translate-y-1"
             >
-              <span className="material-symbols-outlined text-emerald-600 text-[24px] group-hover:scale-110 transition-transform">
-                {skill.icon}
+              <span className="text-emerald-600 flex items-center justify-center group-hover:scale-110 transition-transform">
+                {typeof skill.icon === 'string' ? (
+                  <span className="material-symbols-outlined text-[24px]">{skill.icon}</span>
+                ) : (
+                  skill.icon
+                )}
               </span>
               <p className="text-slate-800 text-sm font-semibold">{skill.name}</p>
             </div>
