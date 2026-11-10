@@ -1,7 +1,9 @@
 import React, { useState, useRef } from 'react';
 import emailjs from '@emailjs/browser';
+import { useLanguage } from '../context/LanguageContext';
 
 const Contact: React.FC = () => {
+  const { t } = useLanguage();
   const formRef = useRef<HTMLFormElement>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
@@ -41,10 +43,10 @@ const Contact: React.FC = () => {
 
       <div className="flex flex-col gap-4 mb-10 text-center md:text-left">
         <h2 className="text-3xl md:text-5xl font-black leading-tight text-slate-900">
-          Let's Connect
+          {t('contact.title')}
         </h2>
         <p className="text-slate-600 text-lg max-w-2xl leading-relaxed">
-          Have a project in mind or just want to say hi? Feel free to reach out directly or use the form. I'm always open to discussing new projects and creative ideas.
+          {t('contact.subtitle')}
         </p>
       </div>
 
@@ -57,8 +59,8 @@ const Contact: React.FC = () => {
           <div className="rounded-2xl border border-slate-200 bg-white p-8 flex flex-col gap-6 relative overflow-hidden group shadow-lg shadow-slate-200/50">
             <div className="absolute right-0 top-0 size-40 bg-emerald-500/10 rounded-full blur-3xl group-hover:bg-emerald-500/20 transition-all duration-500 -translate-y-1/2 translate-x-1/4"></div>
             <div className="relative z-10">
-              <h3 className="text-xl font-bold text-slate-900 mb-2">Direct Contact</h3>
-              <p className="text-slate-600 text-sm mb-6">Drop me an email or reach out via WhatsApp.</p>
+              <h3 className="text-xl font-bold text-slate-900 mb-2">{t('contact.direct')}</h3>
+              <p className="text-slate-600 text-sm mb-6">{t('contact.directDesc')}</p>
               <a href="mailto:faiqmisbah019@gmail.com" className="inline-flex h-12 items-center justify-center rounded-xl bg-[#0c3836] px-6 text-base font-bold text-white transition-all hover:bg-[#072725] hover:scale-[1.02] shadow-md shadow-[#0c3836]/20 w-full mb-3">
                 <span className="material-symbols-outlined mr-2 text-[20px]">mail</span>
                 faiqmisbah019@gmail.com
@@ -77,8 +79,8 @@ const Contact: React.FC = () => {
                 <span className="material-symbols-outlined">location_on</span>
               </div>
               <div>
-                <h4 className="text-base font-bold text-slate-900">Location</h4>
-                <p className="text-sm text-slate-600">Indonesia</p>
+                <h4 className="text-base font-bold text-slate-900">{t('contact.location')}</h4>
+                <p className="text-sm text-slate-600">{t('contact.locationValue')}</p>
               </div>
             </div>
 
@@ -88,7 +90,7 @@ const Contact: React.FC = () => {
                 <span className="material-symbols-outlined">public</span>
               </div>
               <div>
-                <h4 className="text-base font-bold text-slate-900">Socials</h4>
+                <h4 className="text-base font-bold text-slate-900">{t('contact.socials')}</h4>
                 <div className="flex gap-4 mt-1">
                   <a href="https://www.linkedin.com/in/faiq-misbah/" target="_blank" rel="noopener noreferrer" className="text-slate-600 hover:text-emerald-700 transition-colors text-sm font-medium">LinkedIn</a>
                   <a href="https://github.com/faiqmisbah" target="_blank" rel="noopener noreferrer" className="text-slate-600 hover:text-emerald-700 transition-colors text-sm font-medium">GitHub</a>
@@ -107,12 +109,12 @@ const Contact: React.FC = () => {
             <form ref={formRef} className="flex flex-col gap-6" onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <label className="flex flex-col gap-2">
-                  <span className="text-sm font-medium text-slate-800">Name</span>
+                  <span className="text-sm font-medium text-slate-800">{t('contact.name')}</span>
                   <div className="relative">
                     <input
                       type="text"
                       name="from_name"
-                      placeholder="John Doe"
+                      placeholder={t('contact.namePlaceholder')}
                       required
                       className="w-full rounded-lg border border-slate-200 bg-slate-50/50 px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 focus:bg-white outline-none transition-all"
                     />
@@ -120,7 +122,7 @@ const Contact: React.FC = () => {
                   </div>
                 </label>
                 <label className="flex flex-col gap-2">
-                  <span className="text-sm font-medium text-slate-800">Email</span>
+                  <span className="text-sm font-medium text-slate-800">{t('contact.email')}</span>
                   <div className="relative">
                     <input
                       type="email"
@@ -135,23 +137,23 @@ const Contact: React.FC = () => {
               </div>
 
               <label className="flex flex-col gap-2">
-                <span className="text-sm font-medium text-slate-800">Subject</span>
+                <span className="text-sm font-medium text-slate-800">{t('contact.subject')}</span>
                 <select
                   name="subject"
                   required
                   className="w-full rounded-lg border border-slate-200 bg-slate-50/50 px-4 py-3 text-slate-900 focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 focus:bg-white outline-none transition-all appearance-none"
                 >
-                  <option>General Inquiry</option>
-                  <option>Project Proposal</option>
-                  <option>Freelance Opportunity</option>
+                  <option>{t('contact.subGeneral')}</option>
+                  <option>{t('contact.subProposal')}</option>
+                  <option>{t('contact.subFreelance')}</option>
                 </select>
               </label>
 
               <label className="flex flex-col gap-2">
-                <span className="text-sm font-medium text-slate-800">Message</span>
+                <span className="text-sm font-medium text-slate-800">{t('contact.message')}</span>
                 <textarea
                   name="message"
-                  placeholder="Tell me about your project..."
+                  placeholder={t('contact.messagePlaceholder')}
                   required
                   className="w-full min-h-[160px] resize-none rounded-lg border border-slate-200 bg-slate-50/50 px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 focus:bg-white outline-none transition-all"
                 ></textarea>
@@ -161,7 +163,7 @@ const Contact: React.FC = () => {
               {submitStatus === 'success' && (
                 <div className="flex items-center gap-2 p-4 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-800">
                   <span className="material-symbols-outlined text-emerald-600">check_circle</span>
-                  <span className="text-sm font-medium">Message sent successfully! I'll get back to you soon.</span>
+                  <span className="text-sm font-medium">{t('contact.success')}</span>
                 </div>
               )}
 
@@ -169,10 +171,10 @@ const Contact: React.FC = () => {
                 <div className="flex flex-col gap-2 p-4 rounded-xl bg-rose-50 border border-rose-200 text-rose-800">
                   <div className="flex items-center gap-2">
                     <span className="material-symbols-outlined text-rose-600">error</span>
-                    <span className="text-sm font-semibold">EmailJS Credentials belum aktif/terhubung.</span>
+                    <span className="text-sm font-semibold">{t('contact.errorTitle')}</span>
                   </div>
                   <p className="text-xs text-slate-600">
-                    Jangan khawatir! Kamu tetap bisa mengirimkan pesan langsung ke email atau WhatsApp saya melalui tombol berikut:
+                    {t('contact.errorDesc')}
                   </p>
                   <div className="flex flex-wrap gap-2 mt-1">
                     <a
@@ -180,7 +182,7 @@ const Contact: React.FC = () => {
                       className="px-3 py-1.5 rounded-lg bg-[#0c3836] text-white font-bold text-xs hover:bg-[#072725] transition-colors inline-flex items-center gap-1 shadow-sm"
                     >
                       <span className="material-symbols-outlined text-sm">mail</span>
-                      Kirim via Email App
+                      {t('contact.sendViaEmail')}
                     </a>
                     <a
                       href="https://wa.me/6285218555204"
@@ -189,7 +191,7 @@ const Contact: React.FC = () => {
                       className="px-3 py-1.5 rounded-lg bg-emerald-600 text-white font-bold text-xs hover:bg-emerald-700 transition-colors inline-flex items-center gap-1 shadow-sm"
                     >
                       <span className="material-symbols-outlined text-sm">phone</span>
-                      Kirim via WhatsApp
+                      {t('contact.sendViaWa')}
                     </a>
                   </div>
                 </div>
@@ -199,16 +201,16 @@ const Contact: React.FC = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="group flex h-12 w-full sm:w-auto min-w-[160px] items-center justify-center gap-2 rounded-xl bg-[#0c3836] px-6 text-base font-bold text-white shadow-lg shadow-[#0c3836]/20 transition-all hover:bg-[#072725] hover:shadow-[#0c3836]/40 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="group flex h-12 w-full sm:w-auto min-w-[160px] items-center justify-center gap-2 rounded-xl bg-[#0c3836] px-6 text-base font-bold text-white shadow-lg shadow-[#0c3836]/20 transition-all hover:bg-[#072725] hover:shadow-[#0c3836]/40 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
                 >
                   {isSubmitting ? (
                     <>
                       <span className="material-symbols-outlined animate-spin text-[20px]">progress_activity</span>
-                      Sending...
+                      {t('contact.sending')}
                     </>
                   ) : (
                     <>
-                      Send Message
+                      {t('contact.send')}
                       <span className="material-symbols-outlined transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 text-[20px]">send</span>
                     </>
                   )}

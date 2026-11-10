@@ -1,6 +1,9 @@
 import React from 'react';
+import { useLanguage } from '../context/LanguageContext';
 
 const Hero: React.FC = () => {
+  const { t } = useLanguage();
+
   return (
     <section id="about" className="w-full max-w-7xl px-4 md:px-10 lg:px-20 py-28 md:py-36 flex flex-col justify-center">
       <div className="flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-20">
@@ -11,16 +14,20 @@ const Hero: React.FC = () => {
           <div className="flex flex-col gap-4">
             <div className="flex items-center justify-center lg:justify-start">
               <span className="px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-bold uppercase tracking-wider shadow-sm">
-                Available for work
+                {t('hero.available')}
               </span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black leading-[1.1] tracking-tight text-slate-900">
-              Crafting <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0c3836] via-emerald-600 to-teal-500">Digital Solutions</span> with Precision
+              {t('hero.titlePrefix')}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0c3836] via-emerald-600 to-teal-500">
+                {t('hero.titleGradient')}
+              </span>
+              {t('hero.titleSuffix')}
             </h1>
 
             <p className="text-slate-600 text-lg sm:text-xl font-normal leading-relaxed max-w-2xl mx-auto lg:mx-0">
-              Hi, I'm Faiq Misbah Yazdi. A passionate developer and designer with expertise in UI/UX design, data analysis, and programming. I create intuitive digital experiences that solve real-world problems.
+              {t('hero.bio')}
             </p>
           </div>
 
@@ -31,10 +38,13 @@ const Hero: React.FC = () => {
               rel="noopener noreferrer"
               className="flex items-center justify-center h-12 px-8 rounded-xl bg-[#0c3836] hover:bg-[#072725] text-white text-base font-bold transition-all shadow-lg shadow-[#0c3836]/20 hover:-translate-y-1"
             >
-              Lihat CV
+              {t('hero.viewCv')}
             </a>
-            <a href="#contact" className="flex items-center justify-center h-12 px-8 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 text-slate-800 text-base font-bold transition-all hover:-translate-y-1 shadow-sm">
-              Contact Me
+            <a 
+              href="#contact" 
+              className="flex items-center justify-center h-12 px-8 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 text-slate-800 text-base font-bold transition-all hover:-translate-y-1 shadow-sm"
+            >
+              {t('hero.contactMe')}
             </a>
             <a
               href="https://drive.google.com/drive/folders/1Toqrb2Y98E3tREMoGvie6ZGJDnXex5q2?usp=sharing"
@@ -43,14 +53,14 @@ const Hero: React.FC = () => {
               className="flex items-center justify-center gap-2.5 h-12 px-6 rounded-xl bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-800 text-base font-bold transition-all hover:-translate-y-1 shadow-sm"
             >
               <span className="material-symbols-outlined text-xl text-emerald-700">picture_as_pdf</span>
-              <span>Portofolio PDF</span>
+              <span>{t('hero.portfolioPdf')}</span>
             </a>
             <a
               href="#certificates"
               className="flex items-center justify-center gap-2.5 h-12 px-6 rounded-xl bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-800 text-base font-bold transition-all hover:-translate-y-1 shadow-sm"
             >
               <span className="material-symbols-outlined text-xl text-emerald-700">workspace_premium</span>
-              <span>Certificates</span>
+              <span>{t('hero.certificates')}</span>
             </a>
           </div>
 
@@ -58,12 +68,12 @@ const Hero: React.FC = () => {
           <div className="flex items-center justify-center lg:justify-start gap-8 pt-8 border-t border-slate-200 mt-6">
             <div>
               <p className="text-3xl font-extrabold text-slate-900">3+</p>
-              <p className="text-xs text-slate-500 uppercase tracking-wide font-semibold mt-1">Years Exp.</p>
+              <p className="text-xs text-slate-500 uppercase tracking-wide font-semibold mt-1">{t('hero.yearsExp')}</p>
             </div>
             <div className="w-px h-10 bg-slate-200"></div>
             <div>
               <p className="text-3xl font-extrabold text-slate-900">10+</p>
-              <p className="text-xs text-slate-500 uppercase tracking-wide font-semibold mt-1">Projects</p>
+              <p className="text-xs text-slate-500 uppercase tracking-wide font-semibold mt-1">{t('hero.projectsCount')}</p>
             </div>
           </div>
 
@@ -87,8 +97,8 @@ const Hero: React.FC = () => {
                 <span className="material-symbols-outlined">code</span>
               </div>
               <div>
-                <p className="text-xs text-slate-500 font-medium">Current Status</p>
-                <p className="text-sm font-bold text-slate-900">Coding...</p>
+                <p className="text-xs text-slate-500 font-medium">{t('hero.currentStatus')}</p>
+                <p className="text-sm font-bold text-slate-900">{t('hero.coding')}</p>
               </div>
             </div>
           </div>

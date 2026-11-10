@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaFigma } from 'react-icons/fa';
 import { SiGooglecolab } from 'react-icons/si';
+import { useLanguage } from '../context/LanguageContext';
 
 interface SkillItem {
   name: string;
@@ -8,6 +9,8 @@ interface SkillItem {
 }
 
 const Skills: React.FC = () => {
+  const { t } = useLanguage();
+
   const skills: SkillItem[] = [
     { name: 'ReactJS', icon: 'code' },
     { name: 'UI/UX Design', icon: 'brush' },
@@ -24,9 +27,9 @@ const Skills: React.FC = () => {
     <section id="services" className="w-full max-w-7xl px-4 md:px-10 lg:px-20 py-10">
       <div className="flex flex-col gap-8">
         <div className="flex flex-col gap-2">
-            <h2 className="text-slate-900 text-2xl md:text-3xl font-bold leading-tight">My Expertise</h2>
+            <h2 className="text-slate-900 text-2xl md:text-3xl font-bold leading-tight">{t('skills.title')}</h2>
             <p className="text-slate-600 max-w-2xl">
-                Passionate about UI/UX design and data analysis, with strong programming skills. I blend creativity and analytics to build user-centered solutions that deliver measurable results.
+                {t('skills.desc')}
             </p>
         </div>
         

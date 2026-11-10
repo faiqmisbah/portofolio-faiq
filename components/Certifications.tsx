@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useLanguage } from '../context/LanguageContext';
 
 export type CertificationType = 'certification' | 'course';
 
@@ -198,7 +199,46 @@ const certificationsData: Certification[] = [
   },
 ];
 
+const certTranslationsId: Record<string, { fullDescription?: string; category?: string }> = {
+  'azure-ai-fundamentals': {
+    category: 'AI & Komputasi Cloud',
+    fullDescription:
+      'Kursus sertifikasi fundamental yang mencakup konsep kecerdasan buatan inti dan layanan Microsoft Azure AI. Memvalidasi pemahaman komprehensif tentang beban kerja machine learning, computer vision, natural language processing (NLP), arsitektur AI percakapan, dan prinsip-prinsip AI yang bertanggung jawab di Azure.',
+  },
+  'google-gemini-certified': {
+    category: 'AI & Large Language Models',
+    fullDescription:
+      'Sertifikasi resmi yang diterbitkan oleh Google for Education untuk memvalidasi keterampilan fundamental, kemahiran prompt engineering, dan pengetahuan praktis dalam memanfaatkan model Google Gemini AI pada lingkungan pendidikan tinggi, analisis data, penelitian, dan produktivitas kolaboratif.',
+  },
+  'eprt-english-proficiency': {
+    category: 'Bahasa & Komunikasi',
+    fullDescription:
+      'Sertifikasi resmi English Proficiency Test (EPrT®) yang diterbitkan oleh Pusat Bahasa Telkom University (No. 20353/SPi3-F/BHS/2026). Memvalidasi kemampuan komunikasi bahasa Inggris akademik dan profesional secara komprehensif pada Listening Comprehension, Structure & Written Expression (Tata Bahasa), dan Reading Comprehension dengan skor terverifikasi 460.',
+  },
+  'myskill-figma-uiux': {
+    category: 'UI/UX & Desain Produk',
+    fullDescription:
+      'Program intensif 22 modul praktik langsung desain UI/UX dan prototyping oleh MySkill menguasai Figma dan FigJam. Kurikulum mencakup siklus desain produk end-to-end: wireframing dasar, sistem desain yang skalabel, auto layout & varian komponen, panduan gaya, token desain, tata letak web & mobile responsif (dashboard, landing page, onboarding, checkout, profil), mockup UI hi-fi, prototyping interaktif dengan Figma Mirror, dan ideasi kolaboratif FigJam.',
+  },
+  'anthropic-course': {
+    category: 'AI & Sistem Agen Mandiri',
+    fullDescription:
+      'Jalur pembelajaran komprehensif dari Anthropic untuk menguasai ekosistem Claude AI. Seri ini mencakup topik AI dasar hingga tingkat lanjut, termasuk prompt engineering LLM, membangun alur kerja agentic AI dengan subagen dan keterampilan agen, mengintegrasikan Anthropic API di seluruh platform multi-cloud (AWS Bedrock & Google Cloud), serta menerapkan Model Context Protocol (MCP) untuk aplikasi AI yang skalabel.',
+  },
+  'semrush-courses': {
+    category: 'AI & Pemasaran Digital',
+    fullDescription:
+      'Jalur pembelajaran spesialisasi dari Semrush Academy yang berfokus pada pemanfaatan alat AI untuk optimasi pencarian modern, strategi PR, visibilitas merek, dan eksekusi pemasaran berbasis AI.',
+  },
+  'hp-life-courses': {
+    category: 'AI & IT Bisnis',
+    fullDescription:
+      'Koleksi kursus peningkatan keterampilan praktis dari HP LIFE yang mencakup dasar kecerdasan buatan, berpikir kritis di era AI, analitika data, kesadaran keamanan siber, design thinking, dan strategi IT untuk kesuksesan bisnis.',
+  },
+};
+
 const Certifications: React.FC = () => {
+  const { language, t } = useLanguage();
   const [selectedCert, setSelectedCert] = useState<Certification | null>(null);
   const [filter, setFilter] = useState<'all' | 'certification' | 'course'>('all');
 
@@ -227,6 +267,11 @@ const Certifications: React.FC = () => {
 
   const renderCertCard = (cert: Certification) => {
     const isCertification = cert.type === 'certification';
+    const localizedCategory =
+      language === 'id' && certTranslationsId[cert.id]?.category
+        ? certTranslationsId[cert.id].category
+        : cert.category;
+
     return (
       <div
         key={cert.id}
@@ -255,12 +300,12 @@ const Certifications: React.FC = () => {
               {isCertification ? (
                 <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200/80 text-[11px] font-bold">
                   <span className="material-symbols-outlined text-xs text-emerald-600">verified</span>
-                  Certification
+                  {t('certs.badgeCert')}
                 </span>
               ) : (
                 <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 border border-slate-200/80 text-[11px] font-bold">
                   <span className="material-symbols-outlined text-xs text-slate-500">school</span>
-                  Course & Training
+                  {t('certs.badgeCourse')}
                 </span>
               )}
 
@@ -272,7 +317,10 @@ const Certifications: React.FC = () => {
 
           {/* Title & Provider */}
           <div className="py-2">
-            <p className="text-xs font-bold text-emerald-700 tracking-wide uppercase">{cert.provider}</p>
+            <div className="flex items-center justify-between gap-2">
+              <p className="text-xs font-bold text-emerald-700 tracking-wide uppercase">{cert.provider}</p>
+              <span className="text-[11px] font-medium text-slate-400">{localizedCategory}</span>
+            </div>
             <h3 className="text-xl md:text-2xl font-black text-slate-900 group-hover:text-emerald-800 transition-colors mt-0.5 line-clamp-2">
               {cert.title}
             </h3>
@@ -282,7 +330,7 @@ const Certifications: React.FC = () => {
         {/* Action footer link inside card */}
         <div className="flex items-center justify-between pt-5 mt-4 border-t border-slate-100 text-xs font-bold text-emerald-700 group-hover:text-emerald-800">
           <span className="flex items-center gap-1">
-            {isCertification ? 'View Details & Credential' : 'View Details & Curriculum'}
+            {isCertification ? t('certs.actionCert') : t('certs.actionCourse')}
           </span>
           <span className="material-symbols-outlined text-base group-hover:translate-x-1 transition-transform">
             arrow_forward
@@ -291,6 +339,16 @@ const Certifications: React.FC = () => {
       </div>
     );
   };
+
+  const selectedCertDescription =
+    selectedCert && language === 'id' && certTranslationsId[selectedCert.id]?.fullDescription
+      ? certTranslationsId[selectedCert.id].fullDescription!
+      : selectedCert?.fullDescription;
+
+  const selectedCertCategory =
+    selectedCert && language === 'id' && certTranslationsId[selectedCert.id]?.category
+      ? certTranslationsId[selectedCert.id].category!
+      : selectedCert?.category;
 
   return (
     <section id="certificates" className="w-full max-w-7xl px-4 md:px-10 lg:px-20 py-16 md:py-24">
@@ -301,14 +359,14 @@ const Certifications: React.FC = () => {
             <div className="flex items-center justify-center md:justify-start">
               <span className="px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-bold uppercase tracking-wider shadow-sm flex items-center gap-1.5">
                 <span className="material-symbols-outlined text-sm">workspace_premium</span>
-                Professional Development
+                {t('certs.badge')}
               </span>
             </div>
             <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
-              Certifications & Courses
+              {t('certs.title')}
             </h2>
             <p className="text-slate-600 text-base md:text-lg max-w-2xl">
-              Verified certifications and specialized training programs completed to continuously expand technical expertise in artificial intelligence, software engineering, product design, and cloud systems.
+              {t('certs.subtitle')}
             </p>
           </div>
 
@@ -322,7 +380,7 @@ const Certifications: React.FC = () => {
                   : 'bg-white text-slate-600 border border-slate-200 hover:border-emerald-400 hover:text-slate-900 hover:bg-slate-50'
               }`}
             >
-              <span>All</span>
+              <span>{t('certs.all')}</span>
               <span
                 className={`text-[11px] px-2 py-0.5 rounded-full ${
                   filter === 'all' ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-600'
@@ -341,7 +399,7 @@ const Certifications: React.FC = () => {
               }`}
             >
               <span className="material-symbols-outlined text-base text-emerald-400">verified</span>
-              <span>Certifications</span>
+              <span>{t('certs.filterCerts')}</span>
               <span
                 className={`text-[11px] px-2 py-0.5 rounded-full ${
                   filter === 'certification' ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-600'
@@ -360,7 +418,7 @@ const Certifications: React.FC = () => {
               }`}
             >
               <span className="material-symbols-outlined text-base text-slate-400">school</span>
-              <span>Courses & Training</span>
+              <span>{t('certs.filterCourses')}</span>
               <span
                 className={`text-[11px] px-2 py-0.5 rounded-full ${
                   filter === 'course' ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-600'
@@ -382,13 +440,13 @@ const Certifications: React.FC = () => {
                 </div>
                 <div>
                   <div className="flex items-center gap-2">
-                    <h3 className="text-xl font-bold text-slate-900">Official Certifications</h3>
+                    <h3 className="text-xl font-bold text-slate-900">{t('certs.sectionCerts')}</h3>
                     <span className="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold">
                       {certifications.length}
                     </span>
                   </div>
                   <p className="text-xs text-slate-500">
-                    Accredited credentials and standardized exams validating industry competencies and language proficiency
+                    {t('certs.sectionCertsDesc')}
                   </p>
                 </div>
               </div>
@@ -410,13 +468,13 @@ const Certifications: React.FC = () => {
                 </div>
                 <div>
                   <div className="flex items-center gap-2">
-                    <h3 className="text-xl font-bold text-slate-900">Professional Courses & Training</h3>
+                    <h3 className="text-xl font-bold text-slate-900">{t('certs.sectionCourses')}</h3>
                     <span className="px-2 py-0.5 rounded-full bg-slate-100 text-slate-700 border border-slate-200 text-xs font-bold">
                       {courses.length}
                     </span>
                   </div>
                   <p className="text-xs text-slate-500">
-                    Comprehensive curricula, technical workshops, and practical skill-building programs
+                    {t('certs.sectionCoursesDesc')}
                   </p>
                 </div>
               </div>
@@ -429,7 +487,7 @@ const Certifications: React.FC = () => {
         )}
       </div>
 
-      {/* EXPANDED & BALANCED MODAL POPUP (Matching Projects.tsx size & aesthetic) */}
+      {/* EXPANDED & BALANCED MODAL POPUP */}
       {selectedCert && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-slate-900/60 backdrop-blur-md overflow-hidden animate-in fade-in duration-200"
@@ -446,11 +504,11 @@ const Certifications: React.FC = () => {
                   <span className="material-symbols-outlined text-sm">
                     {selectedCert.type === 'certification' ? 'verified' : 'school'}
                   </span>
-                  {selectedCert.type === 'certification' ? 'Official Certification' : 'Professional Training'}
+                  {selectedCert.type === 'certification' ? t('certs.modalCertBadge') : t('certs.modalCourseBadge')}
                 </span>
                 <span className="text-slate-300 hidden sm:inline">•</span>
                 <span className="text-xs font-semibold text-slate-500">
-                  {selectedCert.category}
+                  {selectedCertCategory}
                 </span>
                 <span className="text-slate-300 hidden sm:inline">•</span>
                 <span className="text-xs font-semibold text-slate-500">
@@ -483,7 +541,7 @@ const Certifications: React.FC = () => {
                 </h2>
 
                 <p className="text-slate-600 text-base sm:text-lg leading-relaxed max-w-4xl">
-                  {selectedCert.fullDescription}
+                  {selectedCertDescription}
                 </p>
 
                 {/* Primary Action Links */}
@@ -498,7 +556,7 @@ const Certifications: React.FC = () => {
                       {selectedCert.type === 'certification' ? 'workspace_premium' : 'folder_open'}
                     </span>
                     <span>
-                      {selectedCert.type === 'certification' ? 'View Official Certificate' : 'Open Certificate Folder'}
+                      {selectedCert.type === 'certification' ? t('certs.viewCert') : t('certs.viewFolder')}
                     </span>
                     <span className="material-symbols-outlined text-base">open_in_new</span>
                   </a>
@@ -511,7 +569,7 @@ const Certifications: React.FC = () => {
                       className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs sm:text-sm shadow-md transition-all transform hover:-translate-y-0.5"
                     >
                       <span className="material-symbols-outlined text-base">language</span>
-                      <span>Issuer / Course Website</span>
+                      <span>{t('certs.issuerWebsite')}</span>
                       <span className="material-symbols-outlined text-base">open_in_new</span>
                     </a>
                   )}
@@ -521,23 +579,23 @@ const Certifications: React.FC = () => {
               {/* 2. PROGRAM OVERVIEW & METADATA CARDS */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div className="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-sm flex flex-col gap-1">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">Credential Type</span>
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">{t('certs.credType')}</span>
                   <p className="text-sm font-extrabold text-slate-900">
-                    {selectedCert.type === 'certification' ? 'Official Certification' : 'Professional Training'}
+                    {selectedCert.type === 'certification' ? t('certs.modalCertBadge') : t('certs.modalCourseBadge')}
                   </p>
                 </div>
 
                 <div className="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-sm flex flex-col gap-1">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">Issuing Organization</span>
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">{t('certs.issuer')}</span>
                   <p className="text-sm font-extrabold text-emerald-800 line-clamp-1">
                     {selectedCert.provider}
                   </p>
                 </div>
 
                 <div className="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-sm flex flex-col gap-1">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">Curriculum Scope</span>
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">{t('certs.curriculumScope')}</span>
                   <p className="text-sm font-extrabold text-slate-900">
-                    {selectedCert.modules.length} Verified Modules / Topics
+                    {selectedCert.modules.length} {t('certs.verifiedModules')}
                   </p>
                 </div>
               </div>
@@ -547,7 +605,7 @@ const Certifications: React.FC = () => {
                 <div className="flex items-center justify-between pb-2 border-b border-slate-100">
                   <span className="text-emerald-700 font-bold uppercase tracking-widest text-xs flex items-center gap-1.5">
                     <span className="material-symbols-outlined text-sm">menu_book</span>
-                    Curriculum & Key Competencies ({selectedCert.modules.length} Modules)
+                    {t('certs.curriculumTitle')} ({selectedCert.modules.length} {t('certs.modulesCount')})
                   </span>
                 </div>
 
@@ -583,7 +641,7 @@ const Certifications: React.FC = () => {
                     {selectedCert.type === 'certification' ? 'workspace_premium' : 'folder_open'}
                   </span>
                   <span>
-                    {selectedCert.type === 'certification' ? 'View Certificate (Google Drive)' : 'View Certificate Folder (Google Drive)'}
+                    {selectedCert.type === 'certification' ? t('certs.footerCertDrive') : t('certs.footerFolderDrive')}
                   </span>
                   <span className="material-symbols-outlined text-base">open_in_new</span>
                 </a>
@@ -596,7 +654,7 @@ const Certifications: React.FC = () => {
                     className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs sm:text-sm shadow-md transition-all"
                   >
                     <span className="material-symbols-outlined text-base">language</span>
-                    <span>Website</span>
+                    <span>{t('certs.website')}</span>
                   </a>
                 )}
               </div>
@@ -605,7 +663,7 @@ const Certifications: React.FC = () => {
                 onClick={() => setSelectedCert(null)}
                 className="px-5 py-2.5 rounded-xl border border-slate-300 hover:border-slate-400 bg-white text-slate-700 hover:text-slate-900 font-bold text-xs sm:text-sm transition-all shadow-sm cursor-pointer"
               >
-                Close Details
+                {t('certs.closeModal')}
               </button>
             </div>
 

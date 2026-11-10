@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FaFigma } from 'react-icons/fa';
+import { useLanguage } from '../context/LanguageContext';
 
 export interface MetricItem {
   label: string;
@@ -44,7 +45,102 @@ export interface Project {
   figma?: string;
 }
 
+const projectTranslationsId: Record<
+  number,
+  {
+    title?: string;
+    description?: string;
+    fullDescription?: string;
+  }
+> = {
+  1: {
+    title: 'Website Portofolio Pribadi',
+    description:
+      'Website portofolio modern yang responsif dan interaktif untuk menampilkan rekam jejak, keahlian teknis, dan proyek kreatif saya sebagai pengembang.',
+    fullDescription:
+      'Untuk membangun representasi digital yang kuat, saya merancang dan mengembangkan website portofolio pribadi dengan estetika modern dark/emerald. Platform ini menjadi pusat utama bagi perekrut dan klien untuk melihat keahlian teknis, studi kasus terperinci, dan hasil proyek nyata secara langsung tanpa hambatan.',
+  },
+  2: {
+    title: 'Quote Generator Interaktif',
+    description:
+      'Aplikasi web interaktif yang menyajikan kutipan inspiratif harian berdasarkan kategori suasana hati (mood), dilengkapi fitur salin dan berbagi ke media sosial.',
+    fullDescription:
+      'Saya mengembangkan aplikasi web interaktif untuk menghadirkan inspirasi harian bagi pengguna. Dengan mengintegrasikan REST API, aplikasi ini memungkinkan pengguna menyaring kutipan sesuai suasana hati dan langsung membagikannya ke media sosial, memadukan fungsi teknis dengan desain yang ramah pengguna.',
+  },
+  3: {
+    title: 'Sistem Desain JAKI',
+    description:
+      'Panduan dan sistem desain komprehensif untuk memastikan konsistensi visual serta efisiensi kolaborasi antara tim desainer dan pengembang.',
+    fullDescription:
+      'Untuk ekosistem Jakarta Smart City (JAKI), saya mengembangkan sistem desain komprehensif guna menjaga keselarasan pada berbagai produk digital. Saya membuat dan mendokumentasikan pustaka komponen UI terstandarisasi mulai dari tipografi hingga sistem grid, yang menyatukan bahasa visual dan mempercepat alur kerja antara tim desain dan engineer hingga 40%.',
+  },
+  4: {
+    title: 'Sakuin - Landing Page Fintech',
+    description:
+      'Landing page profesional untuk aplikasi manajemen keuangan pribadi, dirancang untuk membangun kepercayaan pengguna dan menonjolkan fitur pencatatan aset.',
+    fullDescription:
+      'Saya merancang landing page profesional untuk Sakuin, sebuah aplikasi manajemen keuangan pribadi. Melalui pemilihan palet warna yang terpercaya dan tata letak terstruktur, saya menonjolkan fitur pengelolaan aset utama guna menumbuhkan rasa percaya pengguna serta meningkatkan literasi finansial dengan komunikasi visual yang jelas.',
+  },
+  5: {
+    title: 'Konsep Platform E-Voting (Pemilu)',
+    description:
+      'Konsep landing page modern untuk platform pemilihan umum digital yang berfokus pada kejelasan informasi, keamanan identitas, dan transparansi publik.',
+    fullDescription:
+      'Saya mengonsepkan platform pemilihan umum digital modern yang bertujuan meningkatkan transparansi dan partisipasi masyarakat. Saya merancang landing page yang bersih dan informatif untuk memecah proses pemilu yang kompleks menjadi langkah-langkah sederhana, menghadirkan pengalaman voting yang lebih mudah diakses dan terpercaya bagi publik.',
+  },
+  6: {
+    title: 'Platform Web FoodGo',
+    description:
+      'Versi web responsif dari platform FoodGo yang menghadirkan katalog makanan terorganisir dan alur pemesanan intuitif pada layar lebar.',
+    fullDescription:
+      'Melengkapi ekosistem mobile, saya merancang platform web FoodGo untuk mengoptimalkan pengalaman pemesanan pengguna desktop. Saya membangun antarmuka katalog yang responsif dengan pencarian intuitif, pengelompokan menu yang jelas, dan ringkasan pesanan cepat, memastikan pengalaman merek yang selaras di semua perangkat.',
+  },
+  7: {
+    title: 'Aplikasi Mobile FoodGo',
+    description:
+      'Antarmuka mobile ramah pengguna yang dirancang untuk pengalaman pesan-antar makanan tanpa hambatan dari pemilihan menu hingga pembayaran.',
+    fullDescription:
+      'Saya merancang antarmuka mobile end-to-end untuk layanan pesan-antar makanan, mengutamakan kenyamanan pengguna dan visual makanan yang menggugah selera. Dari autentikasi aman hingga alur pembayaran cepat dalam 3 langkah, saya menghadirkan perjalanan pengguna yang intuitif dengan estetika modern.',
+  },
+  8: {
+    title: 'Sistem Rekomendasi Musik',
+    description:
+      'Riset Content-Based Filtering menggunakan Word Embeddings (GloVe, FastText, Word2Vec) berbobot TF-IDF, pengindeksan FAISS, dan evaluasi 5-Fold Cross Validation.',
+    fullDescription:
+      'Proyek riset ini mengimplementasikan sistem rekomendasi musik berbasis Content-Based Filtering dengan Word Embeddings untuk merepresentasikan lirik lagu. Mengevaluasi tiga model embedding (GloVe, FastText, Word2Vec) secara sistematis melalui 5-Fold Cross Validation (K=5, Top-K=20). GloVe unggul sebagai model terbaik dengan Hit Rate 92.65%, MRR 0.4886, dan skor NDCG 0.5792. Seluruh alur kerja—dari pembobotan TF-IDF dan pengindeksan vektor FAISS hingga UI interaktif Gradio—diterapkan langsung secara publik di Hugging Face Spaces.',
+  },
+  9: {
+    title: 'Sistem Rekomendasi Film',
+    description:
+      'Sistem rekomendasi film hybrid yang transparan menggabungkan Matrix Factorization (40%) dan Content-Based Filtering (60%) dengan evaluasi temporal.',
+    fullDescription:
+      'Beyond Ratings adalah riset analisis data mendalam yang mengembangkan sistem rekomendasi film dengan penjelasan yang transparan. Solusi ini menerapkan Model Hybrid Berbobot menggabungkan Collaborative Filtering via Matrix Factorization (40%) dan Content-Based Filtering (60%) dengan alpha optimal (α = 0.4). Dirancang dengan pembagian data temporal ketat dan evaluasi uji terkunci (locked test), sistem menghasilkan 10 rekomendasi film teratas disertai alasan yang mudah dipahami manusia—merinci genre yang cocok, film referensi sebelumnya, dan skor kontribusi tiap model melalui aplikasi web Streamlit.',
+  },
+  10: {
+    title: 'Sistem Rekomendasi Novel',
+    description:
+      'Sistem rekomendasi novel hybrid yang transparan menggabungkan Collaborative Filtering (90%) dan Content-Based Filtering (10%) dengan evaluasi cold-start dan analisis bias.',
+    fullDescription:
+      'Novel Recommender adalah riset analitika data untuk sistem rekomendasi novel Fantasy & Paranormal. Solusi ini menggabungkan Collaborative Filtering (90%) berbasis pola interaksi pembaca dan Content-Based Filtering (10%) representasi TF-IDF metadata buku, dengan alpha hybrid optimal (α = 0.90). Dievaluasi dengan Precision@K, Recall@K, NDCG@K, cakupan katalog, kebaruan (novelty), dan uji skenario cold-start. Model akhir menyajikan rekomendasi 10 novel teratas melalui web Streamlit dengan rincian skor hibrida yang transparan.',
+  },
+  11: {
+    title: 'faiq-kun - Platform Streaming Anime',
+    description:
+      'Antarmuka web streaming anime modern tanpa iklan mengganggu, dilengkapi pemutaran instan tanpa login, penyimpanan progres lokal di peramban, jadwal tayang, dan pemilihan multi-server.',
+    fullDescription:
+      'faiq-kun adalah desain UI/UX web fidelitas tinggi yang diciptakan untuk penggemar anime yang menginginkan pengalaman menonton yang bersih dan bebas gangguan. Mengatasi masalah iklan pop-up agresif, waktu muat lambat, dan keharusan registrasi akun, platform ini mengusung ekosistem "100% Gratis & Tanpa Login". Pengalaman diperkuat oleh penyimpanan lokal peramban (local storage) yang secara otomatis mencatat waktu tonton dan riwayat tontonan langsung di peramban pengguna, didukung perutean multi-server (CDN Lokal Cepat, 1080p Ultra HD, dan mode hemat kuota), jadwal rilis mingguan (WIB), serta navigasi pintasan keyboard.',
+  },
+  12: {
+    title: 'Kopi & Flour - Artisan Roastery & Bakehouse',
+    description:
+      'Antarmuka web roastery kopi artisan dan toko roti sourdough yang memadukan kehangatan fungsional Nordik dengan estetika wabi-sabi Jepang, menghadirkan fitur pesan lebih awal dan eksplorasi lokasi fisik.',
+    fullDescription:
+      'Kopi & Flour adalah desain UI/UX web editorial e-commerce dan pengalaman merek untuk roastery kopi spesialti dan bakery sourdough. Berakar pada perpaduan kehangatan Skandinavia (hygge) dan ketenangan wabi-sabi Jepang, antarmuka ini menciptakan suasana digital yang tenang dan penuh kesadaran. Mengharmoniskan penceritaan artisan—menyoroti biji kopi single-origin beretika dan fermentasi dingin 72 jam—dengan kepraktisan komersial, menghadirkan sistem "Pesan Lebih Awal", katalog produksi harian, langganan biji kopi, dan panduan lokasi santai untuk gerai Senopati.',
+  },
+};
+
 const Projects: React.FC = () => {
+  const { language, t } = useLanguage();
   const [filter, setFilter] = useState('All');
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [activeGalleryIndex, setActiveGalleryIndex] = useState(0);
@@ -69,6 +165,14 @@ const Projects: React.FC = () => {
   }, [selectedProject]);
 
   const categories = ['All', 'UI/UX', 'Web Dev', 'Mobile', 'Data Analysis'];
+
+  const categoryLabels: Record<string, { en: string; id: string }> = {
+    All: { en: 'All', id: 'Semua' },
+    'UI/UX': { en: 'UI/UX', id: 'UI/UX' },
+    'Web Dev': { en: 'Web Dev', id: 'Web Dev' },
+    Mobile: { en: 'Mobile', id: 'Mobile' },
+    'Data Analysis': { en: 'Data Analysis', id: 'Analisis Data' },
+  };
 
   const projects: Project[] = [
     {
@@ -736,12 +840,28 @@ const Projects: React.FC = () => {
     ? projects
     : projects.filter(project => project.category === filter);
 
+  const selectedTitle = selectedProject
+    ? language === 'id' && projectTranslationsId[selectedProject.id]?.title
+      ? projectTranslationsId[selectedProject.id].title!
+      : selectedProject.title
+    : '';
+
+  const selectedFullDesc = selectedProject
+    ? language === 'id' && projectTranslationsId[selectedProject.id]?.fullDescription
+      ? projectTranslationsId[selectedProject.id].fullDescription!
+      : (selectedProject.fullDescription || selectedProject.description)
+    : '';
+
   return (
     <section id="projects" className="w-full max-w-7xl px-4 md:px-10 lg:px-20 py-12">
       <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-10 gap-6">
         <div>
-          <span className="text-emerald-700 font-bold tracking-wider uppercase text-xs mb-2 block">Portfolio</span>
-          <h2 className="text-slate-900 text-3xl md:text-4xl font-black leading-tight">Featured Work</h2>
+          <span className="text-emerald-700 font-bold tracking-wider uppercase text-xs mb-2 block">
+            {t('projects.badge')}
+          </span>
+          <h2 className="text-slate-900 text-3xl md:text-4xl font-black leading-tight">
+            {t('projects.title')}
+          </h2>
         </div>
 
         {/* Filters */}
@@ -755,7 +875,7 @@ const Projects: React.FC = () => {
                 : 'bg-white text-slate-600 border border-slate-200 hover:border-emerald-400 hover:text-slate-900 hover:bg-slate-50'
                 }`}
             >
-              {cat}
+              {categoryLabels[cat] ? categoryLabels[cat][language] : cat}
             </button>
           ))}
         </div>
@@ -763,58 +883,69 @@ const Projects: React.FC = () => {
 
       {/* Grid of Project Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filteredProjects.map((project) => (
-          <article
-            key={project.id}
-            onClick={() => setSelectedProject(project)}
-            className={`group cursor-pointer flex flex-col overflow-hidden rounded-2xl bg-white border border-slate-200/80 shadow-sm hover:shadow-xl hover:shadow-emerald-900/10 hover:border-emerald-400 transition-all transform hover:-translate-y-1 ${project.size === 'large' ? 'md:col-span-2 lg:col-span-2' : ''}`}
-          >
-            {/* Image Section - Top Half */}
-            <div className="w-full overflow-hidden bg-slate-100 relative aspect-video group/img">
-              <img
-                src={project.image}
-                alt={project.title}
-                className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-[2px]">
-                <span className="px-4 py-2 rounded-full bg-white/95 backdrop-blur text-slate-900 font-bold text-xs shadow-lg flex items-center gap-1.5 transform translate-y-2 group-hover:translate-y-0 transition-transform">
-                  <span className="material-symbols-outlined text-base text-emerald-700">visibility</span>
-                  Quick View Details
-                </span>
-              </div>
-            </div>
+        {filteredProjects.map((project) => {
+          const cardTitle =
+            language === 'id' && projectTranslationsId[project.id]?.title
+              ? projectTranslationsId[project.id].title!
+              : project.title;
+          const cardDesc =
+            language === 'id' && projectTranslationsId[project.id]?.description
+              ? projectTranslationsId[project.id].description!
+              : project.description;
 
-            {/* Text Section - Bottom Half */}
-            <div className="p-6 flex flex-col gap-3 flex-1">
-              <div className="flex items-center justify-between gap-2">
-                <span className="rounded-md bg-[#0c3836] px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider text-white">
-                  {project.category}
-                </span>
-                <span className="text-xs font-semibold text-slate-400">
-                  {project.year}
-                </span>
+          return (
+            <article
+              key={project.id}
+              onClick={() => setSelectedProject(project)}
+              className={`group cursor-pointer flex flex-col overflow-hidden rounded-2xl bg-white border border-slate-200/80 shadow-sm hover:shadow-xl hover:shadow-emerald-900/10 hover:border-emerald-400 transition-all transform hover:-translate-y-1 ${project.size === 'large' ? 'md:col-span-2 lg:col-span-2' : ''}`}
+            >
+              {/* Image Section - Top Half */}
+              <div className="w-full overflow-hidden bg-slate-100 relative aspect-video group/img">
+                <img
+                  src={project.image}
+                  alt={cardTitle}
+                  className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-[2px]">
+                  <span className="px-4 py-2 rounded-full bg-white/95 backdrop-blur text-slate-900 font-bold text-xs shadow-lg flex items-center gap-1.5 transform translate-y-2 group-hover:translate-y-0 transition-transform">
+                    <span className="material-symbols-outlined text-base text-emerald-700">visibility</span>
+                    {t('projects.quickView')}
+                  </span>
+                </div>
               </div>
-              <h3 className="text-xl md:text-2xl font-bold text-slate-900 group-hover:text-emerald-700 transition-colors">
-                {project.title}
-              </h3>
-              <p className="text-sm text-slate-600 leading-relaxed flex-1 line-clamp-3">
-                {project.description}
-              </p>
 
-              {/* Action Link */}
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setSelectedProject(project);
-                }}
-                className="inline-flex items-center text-sm font-bold text-emerald-700 hover:text-emerald-800 gap-2 group/link mt-2 text-left"
-              >
-                View Project Details
-                <span className="material-symbols-outlined text-lg transition-transform group-hover/link:translate-x-1">arrow_forward</span>
-              </button>
-            </div>
-          </article>
-        ))}
+              {/* Text Section - Bottom Half */}
+              <div className="p-6 flex flex-col gap-3 flex-1">
+                <div className="flex items-center justify-between gap-2">
+                  <span className="rounded-md bg-[#0c3836] px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider text-white">
+                    {categoryLabels[project.category] ? categoryLabels[project.category][language] : project.category}
+                  </span>
+                  <span className="text-xs font-semibold text-slate-400">
+                    {project.year}
+                  </span>
+                </div>
+                <h3 className="text-xl md:text-2xl font-bold text-slate-900 group-hover:text-emerald-700 transition-colors">
+                  {cardTitle}
+                </h3>
+                <p className="text-sm text-slate-600 leading-relaxed flex-1 line-clamp-3">
+                  {cardDesc}
+                </p>
+
+                {/* Action Link */}
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setSelectedProject(project);
+                  }}
+                  className="inline-flex items-center text-sm font-bold text-emerald-700 hover:text-emerald-800 gap-2 group/link mt-2 text-left"
+                >
+                  {t('projects.viewDetails')}
+                  <span className="material-symbols-outlined text-lg transition-transform group-hover/link:translate-x-1">arrow_forward</span>
+                </button>
+              </div>
+            </article>
+          );
+        })}
       </div>
 
       {/* FIXED & BALANCED CASE STUDY MODAL POPUP */}
@@ -831,7 +962,7 @@ const Projects: React.FC = () => {
             <div className="shrink-0 bg-white border-b border-slate-100 px-6 sm:px-8 py-4 flex items-center justify-between z-10">
               <div className="flex items-center gap-3">
                 <span className="px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-[#0c3836] font-bold text-xs uppercase tracking-wider shadow-sm">
-                  {selectedProject.category} • {selectedProject.year}
+                  {categoryLabels[selectedProject.category] ? categoryLabels[selectedProject.category][language] : selectedProject.category} • {selectedProject.year}
                 </span>
               </div>
               <button
@@ -850,16 +981,16 @@ const Projects: React.FC = () => {
               <div className="flex flex-col gap-4">
                 <div className="flex items-center gap-2">
                   <span className="text-emerald-700 font-bold uppercase tracking-widest text-xs">
-                    {selectedProject.category} — {selectedProject.year}
+                    {categoryLabels[selectedProject.category] ? categoryLabels[selectedProject.category][language] : selectedProject.category} — {selectedProject.year}
                   </span>
                 </div>
 
                 <h2 className="text-3xl sm:text-4xl font-black text-slate-900 leading-tight tracking-tight">
-                  {selectedProject.title}
+                  {selectedTitle}
                 </h2>
 
                 <p className="text-slate-600 text-base sm:text-lg leading-relaxed max-w-4xl">
-                  {selectedProject.fullDescription || selectedProject.description}
+                  {selectedFullDesc}
                 </p>
 
                 {/* Tech Tags */}
@@ -874,7 +1005,7 @@ const Projects: React.FC = () => {
                   ))}
                 </div>
 
-                {/* Main Action CTAs (Includes Visit Live / Figma, GitHub Repo & Contact) */}
+                {/* Main Action CTAs */}
                 <div className="flex flex-wrap items-center gap-3 pt-4 border-b border-slate-200 pb-8">
                   {selectedProject.category === 'UI/UX' ? (
                     (selectedProject.figma || selectedProject.link) && (
@@ -885,7 +1016,7 @@ const Projects: React.FC = () => {
                         className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#0c3836] hover:bg-[#072725] text-white font-bold text-xs sm:text-sm shadow-md shadow-[#0c3836]/20 transition-all transform hover:-translate-y-0.5"
                       >
                         <FaFigma className="text-sm" />
-                        <span>Figma Prototype & Design</span>
+                        <span>{t('projects.figmaPrototype')}</span>
                         <span className="material-symbols-outlined text-base">open_in_new</span>
                       </a>
                     )
@@ -898,7 +1029,7 @@ const Projects: React.FC = () => {
                           rel="noopener noreferrer"
                           className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#0c3836] hover:bg-[#072725] text-white font-bold text-xs sm:text-sm shadow-md shadow-[#0c3836]/20 transition-all transform hover:-translate-y-0.5"
                         >
-                          <span>Visit Live Project</span>
+                          <span>{t('projects.visitLive')}</span>
                           <span className="material-symbols-outlined text-base">open_in_new</span>
                         </a>
                       )}
@@ -911,7 +1042,7 @@ const Projects: React.FC = () => {
                           className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs sm:text-sm shadow-md transition-all transform hover:-translate-y-0.5"
                         >
                           <span className="material-symbols-outlined text-base">code</span>
-                          <span>GitHub Repo</span>
+                          <span>{t('projects.githubRepo')}</span>
                         </a>
                       )}
                     </>
@@ -922,17 +1053,17 @@ const Projects: React.FC = () => {
                     onClick={() => setSelectedProject(null)}
                     className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white hover:bg-slate-50 border border-slate-300 text-slate-800 font-bold text-xs sm:text-sm shadow-sm transition-all"
                   >
-                    <span>Discuss This Project</span>
+                    <span>{t('projects.discussProject')}</span>
                     <span className="material-symbols-outlined text-base">mail</span>
                   </a>
                 </div>
               </div>
 
-              {/* 2. PROJECT SNAPSHOT (KEY METRICS GRID - OVERFLOW PROTECTED) */}
+              {/* 2. PROJECT SNAPSHOT */}
               {selectedProject.metrics && selectedProject.metrics.length > 0 && (
                 <div className="flex flex-col gap-4">
                   <span className="text-emerald-700 font-bold uppercase tracking-widest text-xs">
-                    PROJECT SNAPSHOT & RESEARCH RESULTS
+                    {language === 'id' ? 'RINGKASAN PROYEK & HASIL RISET' : 'PROJECT SNAPSHOT & RESEARCH RESULTS'}
                   </span>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                     {selectedProject.metrics.map((metric, idx) => (
@@ -957,10 +1088,10 @@ const Projects: React.FC = () => {
                 <div className="bg-[#0c3836] text-white rounded-2xl p-6 sm:p-8 flex flex-col lg:flex-row gap-6 lg:gap-12 items-start shadow-lg">
                   <div className="lg:w-1/3 flex flex-col gap-2 shrink-0">
                     <span className="text-emerald-300 font-bold uppercase tracking-widest text-xs">
-                      CORE OBJECTIVES
+                      {language === 'id' ? 'TUJUAN UTAMA' : 'CORE OBJECTIVES'}
                     </span>
                     <h3 className="text-2xl font-black text-white leading-tight">
-                      What research problem does this project solve?
+                      {language === 'id' ? 'Masalah apa yang dipecahkan oleh proyek ini?' : 'What research problem does this project solve?'}
                     </h3>
                   </div>
                   <div className="lg:w-2/3 flex flex-col gap-3 w-full">
@@ -982,7 +1113,7 @@ const Projects: React.FC = () => {
               <div className="flex flex-col gap-4">
                 <div className="flex items-center justify-between">
                   <span className="text-emerald-700 font-bold uppercase tracking-widest text-xs">
-                    RESEARCH FIGURES & SYSTEM SHOWCASE
+                    {language === 'id' ? 'GALERI GAMBAR RISET & SISTEM' : 'RESEARCH FIGURES & SYSTEM SHOWCASE'}
                   </span>
                 </div>
 
@@ -1028,7 +1159,7 @@ const Projects: React.FC = () => {
                               {item.title}
                             </span>
                             <span className={`text-[10px] font-semibold ${activeGalleryIndex === idx ? 'text-emerald-300' : 'text-slate-400'}`}>
-                              Figure 0{idx + 1}
+                              {language === 'id' ? `Gambar 0${idx + 1}` : `Figure 0${idx + 1}`}
                             </span>
                           </div>
                         </button>
@@ -1039,7 +1170,7 @@ const Projects: React.FC = () => {
                   <div className="bg-slate-100 border border-slate-200 rounded-2xl p-3 sm:p-4 overflow-hidden flex items-center justify-center shadow-inner">
                     <img
                       src={selectedProject.image}
-                      alt={selectedProject.title}
+                      alt={selectedTitle}
                       className="w-full max-h-[460px] object-contain rounded-xl shadow-md"
                     />
                   </div>
@@ -1050,10 +1181,10 @@ const Projects: React.FC = () => {
               {selectedProject.keyInsights && selectedProject.keyInsights.length > 0 && (
                 <div className="flex flex-col gap-4">
                   <span className="text-emerald-700 font-bold uppercase tracking-widest text-xs">
-                    KEY INSIGHTS & RESEARCH FINDINGS
+                    {language === 'id' ? 'WAWASAN UTAMA & TEMUAN RISET' : 'KEY INSIGHTS & RESEARCH FINDINGS'}
                   </span>
                   <h3 className="text-2xl font-black text-slate-900">
-                    What stands out from this research work.
+                    {language === 'id' ? 'Hal menarik yang dihasilkan dari proyek riset ini.' : 'What stands out from this research work.'}
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {selectedProject.keyInsights.map((insight, idx) => (
@@ -1080,10 +1211,10 @@ const Projects: React.FC = () => {
               {selectedProject.methodology && selectedProject.methodology.length > 0 && (
                 <div className="flex flex-col gap-4 border-t border-slate-200 pt-8">
                   <span className="text-emerald-700 font-bold uppercase tracking-widest text-xs">
-                    RESEARCH METHODOLOGY & PIPELINE
+                    {language === 'id' ? 'METODOLOGI RISET & ALUR KERJA' : 'RESEARCH METHODOLOGY & PIPELINE'}
                   </span>
                   <h3 className="text-2xl font-black text-slate-900">
-                    From raw data to validated recommendations.
+                    {language === 'id' ? 'Dari data mentah hingga rekomendasi teruji.' : 'From raw data to validated recommendations.'}
                   </h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                     {selectedProject.methodology.map((m, idx) => (
@@ -1110,7 +1241,7 @@ const Projects: React.FC = () => {
               {selectedProject.tools && selectedProject.tools.length > 0 && (
                 <div className="flex flex-col gap-3 border-t border-slate-200 pt-6">
                   <span className="text-emerald-700 font-bold uppercase tracking-widest text-xs">
-                    TOOLS & TECHNOLOGIES
+                    {language === 'id' ? 'ALAT & TEKNOLOGI' : 'TOOLS & TECHNOLOGIES'}
                   </span>
                   <div className="flex flex-wrap gap-2">
                     {selectedProject.tools.map((t, idx) => (
@@ -1127,7 +1258,7 @@ const Projects: React.FC = () => {
 
             </div>
 
-            {/* Modal Footer Fixed Bar (Contains Open Live / Figma, GitHub Repo & Close Case Study) */}
+            {/* Modal Footer Fixed Bar */}
             <div className="shrink-0 bg-slate-50 border-t border-slate-200 px-6 sm:px-8 py-4 flex items-center justify-between flex-wrap gap-3 z-10">
               <div className="flex flex-wrap items-center gap-2">
                 {selectedProject.category === 'UI/UX' ? (
@@ -1139,7 +1270,7 @@ const Projects: React.FC = () => {
                       className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#0c3836] hover:bg-[#072725] text-white font-bold text-xs sm:text-sm shadow-md transition-all"
                     >
                       <FaFigma className="text-sm" />
-                      <span>Open Figma Link</span>
+                      <span>{t('projects.openFigma')}</span>
                       <span className="material-symbols-outlined text-base">open_in_new</span>
                     </a>
                   )
@@ -1152,7 +1283,7 @@ const Projects: React.FC = () => {
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#0c3836] hover:bg-[#072725] text-white font-bold text-xs sm:text-sm shadow-md transition-all"
                       >
-                        <span>Open Live Application</span>
+                        <span>{t('projects.openLive')}</span>
                         <span className="material-symbols-outlined text-base">open_in_new</span>
                       </a>
                     )}
@@ -1165,7 +1296,7 @@ const Projects: React.FC = () => {
                         className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs sm:text-sm shadow-md transition-all"
                       >
                         <span className="material-symbols-outlined text-base">code</span>
-                        <span>GitHub Repo</span>
+                        <span>{t('projects.githubRepo')}</span>
                       </a>
                     )}
                   </>
@@ -1176,7 +1307,7 @@ const Projects: React.FC = () => {
                 onClick={() => setSelectedProject(null)}
                 className="px-5 py-2.5 rounded-xl border border-slate-300 hover:border-slate-400 bg-white text-slate-700 hover:text-slate-900 font-bold text-xs sm:text-sm transition-all shadow-sm cursor-pointer"
               >
-                Close Case Study
+                {t('projects.closeModal')}
               </button>
             </div>
           </div>
