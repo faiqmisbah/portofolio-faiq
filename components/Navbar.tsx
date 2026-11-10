@@ -112,7 +112,7 @@ const Navbar: React.FC = () => {
 
         {/* Mobile Menu Dropdown */}
         {mobileMenuOpen && (
-          <div className="md:hidden absolute top-full left-0 right-0 mt-3 mx-2 bg-white/98 rounded-3xl p-6 shadow-2xl border border-emerald-100 flex flex-col gap-4 text-slate-800 z-50 animate-in fade-in zoom-in-95 duration-200">
+          <div className="md:hidden absolute top-full left-0 right-0 mt-3 mx-2 bg-white rounded-3xl p-6 shadow-2xl border border-emerald-100 flex flex-col gap-4 text-slate-800 z-50 animate-in fade-in zoom-in-95 duration-200">
             <div className="flex items-center justify-between pb-3 border-b border-emerald-50">
               <span className="text-xs font-bold uppercase tracking-wider text-slate-400">
                 {language === 'en' ? 'Language' : 'Bahasa'}
